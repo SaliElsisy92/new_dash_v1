@@ -38,7 +38,7 @@ class setting extends Resource {
 	 * you can use font awesome icons LIKE (<i class="fa fa-users"></i>)
 	 * @param static property string
 	 */
-	public static $icon = ''; // put <i> tag or icon name
+	public static $icon = '<i class="fa fa-edit"></i>'; // put <i> tag or icon name
 
 	/**
 	 * title static property to labels in Rows,Show,Forms
@@ -52,7 +52,7 @@ class setting extends Resource {
 	 */
 	public static $search = [
 		'id',
-		'name',
+		'about_ar','about_en','vision_ar','vision_en','mission_ar','mission_en','last_updates_ar','last_updates_en','awards_ar','awards_en'
 	];
 
 	/**

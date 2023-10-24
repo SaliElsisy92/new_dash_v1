@@ -3,12 +3,12 @@ namespace App\Dash\Resources;
 use Dash\Resource;
 
 class Solutions extends Resource {
-	
+
 	/**
 	 * define Model of resource
 	 * @param Model Class
-	 */ 
-	public static $model = \App\Models\Solution::class ;
+	 */
+	public static $model = \App\Models\Title::class ;
 
 
 	/**
@@ -25,7 +25,7 @@ class Solutions extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'Solutions'; 
+	public static $group = 'Solutions';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false

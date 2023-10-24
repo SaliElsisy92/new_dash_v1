@@ -2,7 +2,6 @@
 namespace App\Providers;
 
 use App\Dash\Dashboard\Help;
-use App\Dash\Resources\soulution_cat;
 use Dash\DashServiceProviderInit;
 
 
@@ -24,7 +23,6 @@ class DashServiceProvider extends DashServiceProviderInit {
 	 */
 	public function resources() {
 		return include_once(app_path('Dash/DashResources.php'));
-
 	}
 
 	/**

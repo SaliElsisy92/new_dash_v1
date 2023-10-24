@@ -36,7 +36,7 @@ return [
 	 * The key to getting updates
 	 * @param string
 	 */
-	'DASH_ACCESS_KEY' => env('DASH_ACCESS_KEY', 'eDRSaGJWT0QycE92U3ZJdHhRY0FzYWxpZWxzaXN5OTJAZ21haWwuY29t'),
+	'DASH_ACCESS_KEY' => env('DASH_ACCESS_KEY', ''),
 
 	/**
 	 * DASHBOARD ICON you can put url or leave it empty
@@ -50,7 +50,7 @@ return [
 	 */
 	'DASHBOARD_LANGUAGES' => [
 		'en'                 => 'English',
-		'ar'                 => 'العربية',
+		//'ar'                 => 'العربية',
 	],
 	/**
 	 * DEFAULT LANGUAGE IN DASHBOARD

@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('soulution_cats', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('photo')->nullable();
             $table->softDeletes();
             $table->timestamps();

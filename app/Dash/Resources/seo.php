@@ -2,13 +2,13 @@
 namespace App\Dash\Resources;
 use Dash\Resource;
 
-class improvement extends Resource {
+class seo extends Resource {
 
 	/**
 	 * define Model of resource
 	 * @param Model Class
 	 */
-	public static $model = \App\Models\Improvement::class ;
+	public static $model = \App\Models\Seo::class ;
 
 
 	/**
@@ -25,7 +25,7 @@ class improvement extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'improvement';
+	public static $group = 'seo';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -52,8 +52,7 @@ class improvement extends Resource {
 	 */
 	public static $search = [
 		'id',
-		'name_ar',
-        'name_en',
+		'name',
 	];
 
 	/**
@@ -69,7 +68,7 @@ class improvement extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return 'improvement';
+		return 'seo';
 	}
 
 	/**
@@ -85,14 +84,14 @@ class improvement extends Resource {
 	 * @return array
 	 */
 	public function fields() {
-		return [
+        return [
             id()->make(__('dash::dash.id'), 'id') ->hideInIndex(),
             text() ->make(__('dash::dash.url'), 'url')
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
-            ->hideInIndex()
+                ->hideInIndex()
             ,
             text() ->make(__('dash::dash.author'), 'author')
                 ->ruleWhenCreate('string', 'min:4')
@@ -100,46 +99,41 @@ class improvement extends Resource {
                 ->columnWhenCreate(6)
                 ->showInShow()
                 ->hideInIndex(),
-            text() ->make(__('dash::dash.name_en'), 'name_en')
+            text() ->make(__('dash::dash.name'), 'name')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow(),
-            text() ->make(__('dash::dash.name_ar'), 'name_ar')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow(),
-            ckeditor() ->make(__('dash::dash.desc_en'), 'desc_en')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            ckeditor() ->make(__('dash::dash.desc_ar'), 'desc_ar')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            text() ->make(__('dash::dash.keys_en'), 'keys_en')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            text() ->make(__('dash::dash.keys_ar'), 'keys_ar')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
 
+            ckeditor() ->make(__('dash::dash.desc'), 'desc')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
+                ->ruleWhenCreate('string', 'min:4')
+                ->ruleWhenUpdate('string', 'min:4')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex(),
+            text() ->make(__('dash::dash.keys'), 'keys')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
+                ->ruleWhenCreate('string', 'min:4')
+                ->ruleWhenUpdate('string', 'min:4')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex(),
             image()->make(__('dash::dash.image'), 'image')
                 ->path('improvement')
                 ->column(6)
                 ->accept('image/png', 'image/jpeg'),
-		];
+        ];
 	}
 
 	/**

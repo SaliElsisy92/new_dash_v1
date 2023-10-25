@@ -2,13 +2,13 @@
 namespace App\Dash\Resources;
 use Dash\Resource;
 
-class setting extends Resource {
+class site extends Resource {
 
 	/**
 	 * define Model of resource
 	 * @param Model Class
 	 */
-	public static $model = \App\Models\Setting::class ;
+	public static $model = \App\Models\Site::class ;
 
 
 	/**
@@ -25,7 +25,7 @@ class setting extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'setting';
+	public static $group = 'site';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -52,7 +52,7 @@ class setting extends Resource {
 	 */
 	public static $search = [
 		'id',
-		'about_ar','about_en','vision_ar','vision_en','mission_ar','mission_en','last_updates_ar','last_updates_en','awards_ar','awards_en'
+		'name',
 	];
 
 	/**
@@ -68,7 +68,7 @@ class setting extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return 'setting';
+		return 'site';
 	}
 
 	/**
@@ -84,80 +84,72 @@ class setting extends Resource {
 	 * @return array
 	 */
 	public function fields() {
-		return [
-			id()->make(__('dash::dash.id'), 'id'),
-            text() ->make(__('dash::dash.key'), 'key')
+        return [
+            id()->make(__('dash::dash.id'), 'id'),
+            text() ->make(__('dash::dash.keys'), 'keys')
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
-            ->hideInIndex()
-        ->hideInUpdate(),
-            ckeditor() ->make(__('dash::dash.about_ar'), 'about_ar')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            ckeditor() ->make(__('dash::dash.about_en'), 'about_en')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-
-            ckeditor() ->make(__('dash::dash.vision_ar'), 'vision_ar')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            ckeditor() ->make(__('dash::dash.vision_en'), 'vision_en')
+                ->hideInIndex()
+                ->hideInUpdate(),
+            ckeditor() ->make(__('dash::dash.about'), 'about')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
                 ->hideInIndex(),
 
-            ckeditor() ->make(__('dash::dash.mission_ar'), 'mission_ar')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            ckeditor() ->make(__('dash::dash.mission_en'), 'mission_en')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-
-            ckeditor() ->make(__('dash::dash.last_updates_ar'), 'last_updates_ar')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            ckeditor() ->make(__('dash::dash.last_updates_en'), 'last_updates_en')
+            ckeditor() ->make(__('dash::dash.vision'), 'vision')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
                 ->hideInIndex(),
 
-            ckeditor() ->make(__('dash::dash.awards_ar'), 'awards_ar')
+
+            ckeditor() ->make(__('dash::dash.mission'), 'mission')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
                 ->hideInIndex(),
-            ckeditor() ->make(__('dash::dash.awards_en'), 'awards_en')
+
+            ckeditor() ->make(__('dash::dash.last_updates'), 'last_updates')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
                 ->hideInIndex(),
-		];
+
+
+            ckeditor() ->make(__('dash::dash.awards'), 'awards')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
+                ->ruleWhenCreate('string', 'min:4')
+                ->ruleWhenUpdate('string', 'min:4')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex(),
+        ];
 	}
 
 	/**

@@ -11,10 +11,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-<<<<<<< HEAD
         "nwidart/laravel-modules": "^10.0",
-=======
->>>>>>> 7d1bffc6eae8124b7b0d9a41110429710bc8e51a
         "phpanonymous/dash": "*"
     },
     "require-dev": {

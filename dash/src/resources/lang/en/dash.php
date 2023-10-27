@@ -116,4 +116,11 @@ return [
     'last_updates_en'=>'Last Updates  in English',
     'awards_ar'=>'Awards in Arabic',
     'awards_en'=>'Awards in English',
+
+    // Project Labels Translate
+
+    'title'=>'Tilte',
+    "content"=> "Content",
+    "main_title" =>"Main Title",
+
 ];

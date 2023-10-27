@@ -113,6 +113,15 @@ return [
     'awards_ar'=>'الجوائز باللغه العربيه',
     'awards_en'=>'الجوائز باللغه الانجليزيه',
 
+    // Project Labels Translate
+
+    'title'=>'العنوان',
+    "content"=> 'المحتوى',
+    "main_title" =>"العنوان الرئيسى",
+
+
+
+
 
 
 

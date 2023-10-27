@@ -1,16 +1,16 @@
 <?php
 namespace App\Dash\Resources;
 use Dash\Resource;
-use App\Models\Solution;
-use App\Models\SolutionTranslation;
+use App\Dash\Resources\Solutions;
+use  App\Models\Solution;
 
-class Solutions extends Resource {
+class Solution_subTitles extends Resource {
 
 	/**
 	 * define Model of resource
 	 * @param Model Class
 	 */
-	public static $model = \App\Models\Solution::class ;
+	public static $model = \App\Models\Solution_subTitle::class ;
 
 
 	/**
@@ -70,7 +70,7 @@ class Solutions extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return 'Solutions Titles';
+		return 'Solution Subtitles';
 	}
 
 	/**
@@ -89,6 +89,13 @@ class Solutions extends Resource {
 		return [
 			id()->make(__('dash::dash.id'), 'id'),
 
+            select()->make(__("dash::dash.main_title"),'title')
+           ->options(Solution::all()->pluck('title')->toArray())->hideInIndex(),
+
+           text()->make('parent_id','parent_id')->value(function(){
+            return  Solution::listsTranslations('title')->where('title',request('Main Title'))->get()->pluck('id'); })
+            ->hideInAll(),
+
             text()->make(__("dash::dash.title"), 'title')
             ->translatable([
             'ar' => 'العربية',
@@ -100,10 +107,8 @@ class Solutions extends Resource {
             'ar' => 'العربية',
             'en' => 'English',
             ]),
-            image()->make(__("dash::dash.image"),'image')->default('null')
 
-
-
+            image()->make(__("dash::dash.image"),'image')
 		];
 	}
 

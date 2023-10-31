@@ -16,7 +16,7 @@ class site extends Resource {
 	 * (viewAny,view,create,update,delete,forceDelete,restore) methods
 	 * @param static property as Policy Class
 	 */
-	//public static $policy = \App\Policies\UserPolicy::class ;
+public static $policy = \App\Policies\Custom::class ;
 
 	/**
 	 * define this resource in group to show in navigation menu
@@ -67,9 +67,12 @@ class site extends Resource {
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
-	public static function customName() {
-		return 'site';
-	}
+
+        public static function customName() {
+            return __('dash.site');
+        }
+
+
 
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
@@ -78,6 +81,9 @@ class site extends Resource {
 	public static function vertex() {
 		return [];
 	}
+
+    public static $paging=false;
+
 
 	/**
 	 * define fields by Helpers

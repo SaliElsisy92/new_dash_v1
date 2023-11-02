@@ -66,6 +66,7 @@ return [
 	'deletable'           => 'جار الحذف',
 	'gallery'             => 'معرض الصور',
 
+
 	'user_id'   => 'المستخدم',
 	'file'      => 'الملف',
 	'full_path' => 'معاينة',

@@ -69,6 +69,7 @@ return [
 	'are_you_sure_delete' => 'Are you sure to delete this file?',
 	'deletable'           => 'deleting',
 	'gallery'             => 'Photo Gallery',
+    'site'=>'Main Data',
 
 	'user_id'   => 'User',
 	'file'      => 'File',

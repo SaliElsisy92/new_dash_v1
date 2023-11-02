@@ -6,25 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
-use App\Models\Solution_subTitle;
-use App\Models\SolutionTranslation;
+use App\Models\ManPowerService_subTitle;
 
-class Solution extends Model implements TranslatableContract
+
+
+class ManPowerService extends Model
 {
-    use Translatable;
     use HasFactory;
+    use Translatable;
     public $translatedAttributes = ['title','content'];
     protected $fillable = ['image'];
 
 
         public function sub_title()
         {
-            return $this->hasMany(Solution_subTitle::class,'parent_id');
+            return $this->hasMany(ManPowerService_subTitle::class,'parent_id');
         }
-
-        public function titleLangAll() {
-            return $this->hasMany(SolutionTranslation::class, 'solution_id');
-        }
-
-
 }

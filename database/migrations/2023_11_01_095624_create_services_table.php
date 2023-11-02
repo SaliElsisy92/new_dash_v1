@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('solution_sub_titles', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("parent_id");
-            $table->string('image');
-            $table->foreign('parent_id')->references('id')->on('solutions')->onDelete('cascade');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
-
-
     }
 
     /**
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('solution_sub_titles');
+        Schema::dropIfExists('services');
     }
 };

@@ -3,6 +3,9 @@ namespace App\Dash\Resources;
 use Dash\Resource;
 use App\Models\Solution;
 use App\Models\SolutionTranslation;
+use App\Dash\Resources\Solution_subTitles;
+use  App\Models\Solution_subTitle;
+use Illuminate\Contracts\Database\Query\Builder;
 
 class Solutions extends Resource {
 
@@ -53,8 +56,8 @@ class Solutions extends Resource {
 	 * @param static property array
 	 */
 	public static $search = [
-		'id',
-		'title',
+
+
 	];
 
 	/**
@@ -63,7 +66,9 @@ class Solutions extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [];
+	public static $searchWithRelation = [
+        'titleLangAll' => ['title','id'],
+    ];
 
 	/**
 	 * if you need to custom resource name in menu navigation
@@ -73,6 +78,18 @@ class Solutions extends Resource {
 		return 'Solutions Titles';
 	}
 
+
+  /*   public function query($model) {
+
+         $titles = Solution::select("*")->with([
+            'sub_title' => function(){
+                Solution_subTitle::with(['subtitleLangAll'])->pluck('sub_title','id');
+            }
+        ]);
+
+		return $titles;
+	}
+ */
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
 	 * @return array
@@ -87,9 +104,9 @@ class Solutions extends Resource {
 	 */
 	public function fields() {
 		return [
-			id()->make(__('dash::dash.id'), 'id'),
+			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
 
-            text()->make(__("dash::dash.title"), 'title')
+            text()->make(__("dash::dash.main_title"), 'title')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
@@ -99,8 +116,14 @@ class Solutions extends Resource {
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
-            ]),
+            ])->hideInIndex()->default('null'),
+
             image()->make(__("dash::dash.image"),'image')->default('null')
+            ->accept('image/*'),
+
+         //  text()->make('sub','sub_title'),
+
+           // hasMany()->make('SubTitles', 'sub_title', Solution_subTitles::class ),
 
 
 

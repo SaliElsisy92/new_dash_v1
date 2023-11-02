@@ -4,17 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\Models\Solution_subTitle;
+use app\Models\Service_subTitle;
 
-class Solution_subTitleTranslation extends Model
+class Service_subtitleTranslation extends Model
 {
     use HasFactory;
 
 
+
     public $timestamps = false;
-    protected $fillable = ['solution_sub_title_id','sub_title', 'content'];
+    protected $fillable = ['service_subtitle_id','sub_title', 'content'];
 
     public function subtitle() {
-        return $this->belongsTo(Solution_subTitle::class);
+        return $this->belongsTo(Service_subTitle::class);
     }
 }

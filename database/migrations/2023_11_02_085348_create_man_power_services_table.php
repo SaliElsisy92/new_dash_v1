@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-
+        Schema::create('man_power_services', function (Blueprint $table) {
+            $table->id();
+            $table->string('image')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-
+        Schema::dropIfExists('man_power_services');
     }
 };

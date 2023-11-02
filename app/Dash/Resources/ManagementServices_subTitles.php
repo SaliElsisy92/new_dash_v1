@@ -1,17 +1,14 @@
 <?php
 namespace App\Dash\Resources;
 use Dash\Resource;
-use App\Dash\Resources\Solutions;
-use  App\Models\Solution;
 
-
-class Solution_subTitles extends Resource {
-
+class ManagementServices_subTitles extends Resource {
+	
 	/**
 	 * define Model of resource
 	 * @param Model Class
-	 */
-	public static $model = \App\Models\Solution_subTitle::class ;
+	 */ 
+	public static $model = \App\Models\ManagementServices_subTitle::class ;
 
 
 	/**
@@ -28,7 +25,7 @@ class Solution_subTitles extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'Solutions';
+	public static $group = 'ManagementServices_subTitles'; 
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -54,7 +51,8 @@ class Solution_subTitles extends Resource {
 	 * @param static property array
 	 */
 	public static $search = [
-
+		'id',
+		'name',
 	];
 
 	/**
@@ -63,20 +61,15 @@ class Solution_subTitles extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [
-        'subtitleLangAll' => ['sub_title']
-    ];
+	public static $searchWithRelation = [];
 
 	/**
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
 	public static function customName() {
-		return 'Solution Subtitles';
+		return 'ManagementServices_subTitles';
 	}
-
-
-
 
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
@@ -92,26 +85,7 @@ class Solution_subTitles extends Resource {
 	 */
 	public function fields() {
 		return [
-			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
-
-            select()->make(__("dash::dash.main_title"),'parent_id')
-           ->options(Solution::all()->pluck('title','id')->toArray())->hideInIndex(),
-
-
-
-            text()->make(__("dash::dash.subtitle"), 'sub_title')
-            ->translatable([
-            'ar' => 'العربية',
-            'en' => 'English',
-            ]),
-
-            ckeditor()->make(__("dash::dash.content"), 'content')
-            ->translatable([
-            'ar' => 'العربية',
-            'en' => 'English',
-            ])->hideInIndex(),
-
-            image()->make(__("dash::dash.image"),'image')
+			id()->make(__('dash::dash.id'), 'id'),
 		];
 	}
 

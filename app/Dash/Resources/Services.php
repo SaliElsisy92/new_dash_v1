@@ -1,17 +1,15 @@
 <?php
 namespace App\Dash\Resources;
 use Dash\Resource;
-use App\Dash\Resources\Solutions;
-use  App\Models\Solution;
 
 
-class Solution_subTitles extends Resource {
+class Services extends Resource {
 
 	/**
 	 * define Model of resource
 	 * @param Model Class
 	 */
-	public static $model = \App\Models\Solution_subTitle::class ;
+	public static $model = \App\Models\Service::class ;
 
 
 	/**
@@ -28,7 +26,7 @@ class Solution_subTitles extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'Solutions';
+	public static $group = 'Services';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -63,20 +61,15 @@ class Solution_subTitles extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [
-        'subtitleLangAll' => ['sub_title']
-    ];
+	public static $searchWithRelation = [];
 
 	/**
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
 	public static function customName() {
-		return 'Solution Subtitles';
+		return 'Services';
 	}
-
-
-
 
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
@@ -94,12 +87,7 @@ class Solution_subTitles extends Resource {
 		return [
 			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
 
-            select()->make(__("dash::dash.main_title"),'parent_id')
-           ->options(Solution::all()->pluck('title','id')->toArray())->hideInIndex(),
-
-
-
-            text()->make(__("dash::dash.subtitle"), 'sub_title')
+            text()->make(__("dash::dash.main_title"), 'title')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
@@ -109,9 +97,10 @@ class Solution_subTitles extends Resource {
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
-            ])->hideInIndex(),
+            ])->hideInIndex()->default('null'),
 
-            image()->make(__("dash::dash.image"),'image')
+            image()->make(__("dash::dash.image"),'image')->default('null')
+            ->accept('image/*'),
 		];
 	}
 

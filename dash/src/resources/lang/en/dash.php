@@ -124,4 +124,5 @@ return [
     'mission'=>'Our Mission',
     'last_updates'=>'Last Updates',
     'awards'=>'Awards',
+    "subtitle"=>"SubTitle"
 ];

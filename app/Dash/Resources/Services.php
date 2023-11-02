@@ -68,7 +68,7 @@ class Services extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return 'Services';
+		return  __("dash::dash.services titles");;
 	}
 
 	/**

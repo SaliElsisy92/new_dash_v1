@@ -69,7 +69,7 @@ class Service_subTitles extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return 'Service_subTitles';
+		return  __("dash::dash.services subtitles");;
 	}
 
 	/**

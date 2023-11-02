@@ -68,7 +68,7 @@ class ManPowerServices extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return 'ManPowerServices';
+		return  __("dash::dash.manpower titles") ;
 	}
 
 	/**

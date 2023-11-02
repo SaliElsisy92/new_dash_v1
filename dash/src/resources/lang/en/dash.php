@@ -119,11 +119,21 @@ return [
     'title'=>'Tilte',
     "content"=> "Content",
     "main_title" =>"Main Title",
+    "solutions" => "Solution",
+    "services" => "Services",
+    "solution subtitles" =>"Solution Subtitles",
+    "solution_titles" => "Solution Titles",
+    "services titles" =>"Services Titles",
+    "services subtitles" =>"Services Subtitles",
+    "manpower titles" =>"ManPower Sevices Titles",
+    "manpower subtitles" =>"ManPower Services Subtitles",
+
 
     'about'=>'About Us',
     'vision'=>'Our Vision',
     'mission'=>'Our Mission',
     'last_updates'=>'Last Updates',
     'awards'=>'Awards',
-    "subtitle"=>"SubTitle"
+    "subtitle"=>"SubTitle",
+    "post" => "Post"
 ];

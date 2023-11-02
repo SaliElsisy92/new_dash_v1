@@ -69,7 +69,7 @@ class ManPowerServices_subTitles extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return 'ManPowerServices_subTitles';
+		return  __("dash::dash.manpower subtitles");;
 	}
 
 	/**

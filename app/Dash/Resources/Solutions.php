@@ -75,7 +75,7 @@ class Solutions extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return 'Solutions Titles';
+		return __("dash::dash.solution_titles");
 	}
 
 

@@ -68,7 +68,7 @@ class post extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return 'post';
+		return __('dash::dash.post');
 	}
 
 	/**

@@ -4,6 +4,7 @@ use Dash\Resource;
 use App\Dash\Resources\Solutions;
 use  App\Models\Solution;
 
+
 class Solution_subTitles extends Resource {
 
 	/**
@@ -53,8 +54,7 @@ class Solution_subTitles extends Resource {
 	 * @param static property array
 	 */
 	public static $search = [
-		'id',
-		'title',
+
 	];
 
 	/**
@@ -63,15 +63,20 @@ class Solution_subTitles extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [];
+	public static $searchWithRelation = [
+        'subtitleLangAll' => ['sub_title']
+    ];
 
 	/**
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
 	public static function customName() {
-		return 'Solution Subtitles';
+		return  __("dash::dash.solution subtitles");
 	}
+
+
+
 
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
@@ -87,16 +92,14 @@ class Solution_subTitles extends Resource {
 	 */
 	public function fields() {
 		return [
-			id()->make(__('dash::dash.id'), 'id'),
+			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
 
-            select()->make(__("dash::dash.main_title"),'title')
-           ->options(Solution::all()->pluck('title')->toArray())->hideInIndex(),
+            select()->make(__("dash::dash.main_title"),'parent_id')
+           ->options(Solution::all()->pluck('title','id')->toArray())->hideInIndex(),
 
-           text()->make('parent_id','parent_id')->value(function(){
-            return  Solution::listsTranslations('title')->where('title',request('Main Title'))->get()->pluck('id'); })
-            ->hideInAll(),
 
-            text()->make(__("dash::dash.title"), 'title')
+
+            text()->make(__("dash::dash.subtitle"), 'sub_title')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
@@ -106,7 +109,7 @@ class Solution_subTitles extends Resource {
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
-            ]),
+            ])->hideInIndex(),
 
             image()->make(__("dash::dash.image"),'image')
 		];

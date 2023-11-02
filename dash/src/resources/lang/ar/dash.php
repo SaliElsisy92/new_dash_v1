@@ -111,6 +111,15 @@ return [
     'title'=>'العنوان',
     "content"=> 'المحتوى',
     "main_title" =>"العنوان الرئيسى",
+    "subtitle"=>"العنوان الفرعى",
+    "services" => "الخدمات",
+    "solution subtitles" =>"عناوين فرعيه الخاصه بالحلول",
+    "solution_titles" => "عناوين الحلول",
+    "services titles" =>"عناوين الخدمات",
+    "services subtitles" =>"عناوين فرعيه خاصه بالخدمات",
+    "manpower titles"=>"عناوين الخدمات البشريه",
+    "manpower subtitles"=>"عناوين فرعيه خاصه بخدمات البشريه",
+    "post" => "المنشورات"
 
 
 

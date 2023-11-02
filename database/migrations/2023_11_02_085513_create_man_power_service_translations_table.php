@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('solution_translations', function (Blueprint $table) {
+        Schema::create('man_power_service_translations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("solution_id");
+            $table->unsignedBigInteger("man_power_service_id");
             $table->string('locale')->index();
             $table->string('title');
             $table->text('content')->nullable();
 
-            $table->unique(['solution_id', 'locale']);
-            $table->foreign('solution_id')->references('id')->on('solutions')->onDelete('cascade');
+            $table->index(['man_power_service_id', 'locale'],'manpower_id_locale_unique');
+
+            $table->foreign('man_power_service_id')->references('id')->on('man_power_services')->onDelete('cascade');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('solution_translations');
+        Schema::dropIfExists('man_power_service_translations');
     }
 };

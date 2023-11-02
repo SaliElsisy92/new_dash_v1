@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('solution_translations', function (Blueprint $table) {
+        Schema::create('service_translations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("solution_id");
+            $table->unsignedBigInteger("service_id");
             $table->string('locale')->index();
             $table->string('title');
             $table->text('content')->nullable();
 
-            $table->unique(['solution_id', 'locale']);
-            $table->foreign('solution_id')->references('id')->on('solutions')->onDelete('cascade');
+            $table->unique(['service_id', 'locale']);
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('solution_translations');
+        Schema::dropIfExists('service_translations');
     }
 };

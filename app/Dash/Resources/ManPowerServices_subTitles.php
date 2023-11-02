@@ -1,19 +1,15 @@
 <?php
 namespace App\Dash\Resources;
 use Dash\Resource;
-use App\Models\Solution;
-use App\Models\SolutionTranslation;
-use App\Dash\Resources\Solution_subTitles;
-use  App\Models\Solution_subTitle;
-use Illuminate\Contracts\Database\Query\Builder;
+use \App\Models\ManPowerService;
 
-class Solutions extends Resource {
+class ManPowerServices_subTitles extends Resource {
 
 	/**
 	 * define Model of resource
 	 * @param Model Class
 	 */
-	public static $model = \App\Models\Solution::class ;
+	public static $model = \App\Models\ManPowerService_subTitle::class ;
 
 
 	/**
@@ -30,7 +26,7 @@ class Solutions extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'Solutions';
+	public static $group = 'ManPowerServices';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -56,8 +52,8 @@ class Solutions extends Resource {
 	 * @param static property array
 	 */
 	public static $search = [
-
-
+		'id',
+		'name',
 	];
 
 	/**
@@ -66,30 +62,16 @@ class Solutions extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [
-        'titleLangAll' => ['title','id'],
-    ];
+	public static $searchWithRelation = [];
 
 	/**
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
 	public static function customName() {
-		return __("dash::dash.solution_titles");
+		return  __("dash::dash.manpower subtitles");;
 	}
 
-
-  /*   public function query($model) {
-
-         $titles = Solution::select("*")->with([
-            'sub_title' => function(){
-                Solution_subTitle::with(['subtitleLangAll'])->pluck('sub_title','id');
-            }
-        ]);
-
-		return $titles;
-	}
- */
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
 	 * @return array
@@ -105,27 +87,24 @@ class Solutions extends Resource {
 	public function fields() {
 		return [
 			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
-
-            text()->make(__("dash::dash.main_title"), 'title')
-            ->translatable([
-            'ar' => 'العربية',
-            'en' => 'English',
-            ]),
-
-            ckeditor()->make(__("dash::dash.content"), 'content')
-            ->translatable([
-            'ar' => 'العربية',
-            'en' => 'English',
-            ])->hideInIndex()->default('null'),
-
-            image()->make(__("dash::dash.image"),'image')->default('null')
-            ->accept('image/*'),
-
-         //  text()->make('sub','sub_title'),
-
-           // hasMany()->make('SubTitles', 'sub_title', Solution_subTitles::class ),
+            select()->make(__("dash::dash.main_title"),'parent_id')
+            ->options(ManPowerService::all()->pluck('title','id')->toArray())->hideInIndex(),
 
 
+
+             text()->make(__("dash::dash.subtitle"), 'sub_title')
+             ->translatable([
+             'ar' => 'العربية',
+             'en' => 'English',
+             ]),
+
+             ckeditor()->make(__("dash::dash.content"), 'content')
+             ->translatable([
+             'ar' => 'العربية',
+             'en' => 'English',
+             ])->hideInIndex(),
+
+             image()->make(__("dash::dash.image"),'image')
 
 		];
 	}

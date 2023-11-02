@@ -1,19 +1,15 @@
 <?php
 namespace App\Dash\Resources;
 use Dash\Resource;
-use App\Models\Solution;
-use App\Models\SolutionTranslation;
-use App\Dash\Resources\Solution_subTitles;
-use  App\Models\Solution_subTitle;
-use Illuminate\Contracts\Database\Query\Builder;
 
-class Solutions extends Resource {
+
+class Services extends Resource {
 
 	/**
 	 * define Model of resource
 	 * @param Model Class
 	 */
-	public static $model = \App\Models\Solution::class ;
+	public static $model = \App\Models\Service::class ;
 
 
 	/**
@@ -30,7 +26,7 @@ class Solutions extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'Solutions';
+	public static $group = 'Services';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -57,7 +53,6 @@ class Solutions extends Resource {
 	 */
 	public static $search = [
 
-
 	];
 
 	/**
@@ -66,30 +61,16 @@ class Solutions extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [
-        'titleLangAll' => ['title','id'],
-    ];
+	public static $searchWithRelation = [];
 
 	/**
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
 	public static function customName() {
-		return __("dash::dash.solution_titles");
+		return  __("dash::dash.services titles");;
 	}
 
-
-  /*   public function query($model) {
-
-         $titles = Solution::select("*")->with([
-            'sub_title' => function(){
-                Solution_subTitle::with(['subtitleLangAll'])->pluck('sub_title','id');
-            }
-        ]);
-
-		return $titles;
-	}
- */
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
 	 * @return array
@@ -120,13 +101,6 @@ class Solutions extends Resource {
 
             image()->make(__("dash::dash.image"),'image')->default('null')
             ->accept('image/*'),
-
-         //  text()->make('sub','sub_title'),
-
-           // hasMany()->make('SubTitles', 'sub_title', Solution_subTitles::class ),
-
-
-
 		];
 	}
 

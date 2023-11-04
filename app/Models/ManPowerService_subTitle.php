@@ -21,4 +21,9 @@ class ManPowerService_subTitle extends Model
         {
             return $this->belongsTo(ManPowerService::class);
         }
+
+
+        public function subtitleLangAll() {
+            return $this->hasMany(ManPowerService_subTitleTranslation::class, 'man_power_service_sub_title_id');
+        }
 }

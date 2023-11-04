@@ -54,7 +54,7 @@ class Solution_subTitles extends Resource {
 	 * @param static property array
 	 */
 	public static $search = [
-
+         "id"
 	];
 
 	/**

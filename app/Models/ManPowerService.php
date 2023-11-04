@@ -22,4 +22,9 @@ class ManPowerService extends Model
         {
             return $this->hasMany(ManPowerService_subTitle::class,'parent_id');
         }
+
+
+        public function titleLangAll() {
+            return $this->hasMany(ManPowerServiceTranslation::class, 'man_power_service_id');
+        }
 }

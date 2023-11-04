@@ -52,7 +52,7 @@ class ManPowerServices extends Resource {
 	 */
 	public static $search = [
 		'id',
-		'name',
+
 	];
 
 	/**
@@ -61,7 +61,9 @@ class ManPowerServices extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [];
+	public static $searchWithRelation = [
+        'titleLangAll' =>['title']
+    ];
 
 	/**
 	 * if you need to custom resource name in menu navigation

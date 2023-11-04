@@ -52,7 +52,7 @@ class Services extends Resource {
 	 * @param static property array
 	 */
 	public static $search = [
-
+       "id"
 	];
 
 	/**
@@ -61,7 +61,9 @@ class Services extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [];
+	public static $searchWithRelation = [
+        'titleLangAll' =>['title']
+    ];
 
 	/**
 	 * if you need to custom resource name in menu navigation

@@ -53,7 +53,7 @@ class Service_subTitles extends Resource {
 	 */
 	public static $search = [
 		'id',
-		'name',
+
 	];
 
 	/**
@@ -62,7 +62,9 @@ class Service_subTitles extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [];
+	public static $searchWithRelation = [
+        'subtitleLangAll' => ['sub_title']
+    ];
 
 	/**
 	 * if you need to custom resource name in menu navigation

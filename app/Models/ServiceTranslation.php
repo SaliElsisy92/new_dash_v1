@@ -15,4 +15,5 @@ class ServiceTranslation extends Model
     public function title() {
         return $this->belongsTo(Service::class);
     }
+
 }

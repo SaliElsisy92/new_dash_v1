@@ -56,7 +56,7 @@ class Solutions extends Resource {
 	 * @param static property array
 	 */
 	public static $search = [
-
+         "id"
 
 	];
 
@@ -67,7 +67,7 @@ class Solutions extends Resource {
 	 * @param static array
 	 */
 	public static $searchWithRelation = [
-        'titleLangAll' => ['title','id'],
+        'titleLangAll' =>['title']
     ];
 
 	/**

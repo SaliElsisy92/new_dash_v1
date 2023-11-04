@@ -13,4 +13,7 @@ class ManPowerService_subTitleTranslation extends Model
     public $timestamps = false;
     protected $fillable = ['man_power_service_sub_title_id','sub_title', 'content'];
 
+    public function subtitle() {
+        return $this->belongsTo(ManPowerService_subTitle::class);
+    }
 }

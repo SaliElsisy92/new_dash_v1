@@ -132,7 +132,7 @@ class seo extends Resource {
                 ->showInShow()
                 ->hideInIndex(),
             image()->make(__('dash::dash.image'), 'image')
-                ->path('improvement')
+                ->path('storage//storage/app/improvement')
                 ->column(6)
                 ->accept('image/png', 'image/jpeg'),
         ];

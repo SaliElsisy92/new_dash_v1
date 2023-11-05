@@ -3,12 +3,12 @@ namespace App\Dash\Resources;
 use Dash\Resource;
 
 class ManagementServices extends Resource {
-	
+
 	/**
 	 * define Model of resource
 	 * @param Model Class
-	 */ 
-	public static $model = \App\Models\ManagementService::class ;
+	 */
+	public static $model = \App\Models\Management::class ;
 
 
 	/**
@@ -25,7 +25,7 @@ class ManagementServices extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'ManagementServices'; 
+	public static $group = 'ManagementServices';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -52,7 +52,7 @@ class ManagementServices extends Resource {
 	 */
 	public static $search = [
 		'id',
-		'name',
+
 	];
 
 	/**
@@ -61,14 +61,16 @@ class ManagementServices extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [];
+	public static $searchWithRelation = [
+        'titleLangAll' =>['title']
+    ];
 
 	/**
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
 	public static function customName() {
-		return 'ManagementServices';
+		return  __("dash::dash.management services titles");
 	}
 
 	/**
@@ -85,8 +87,23 @@ class ManagementServices extends Resource {
 	 */
 	public function fields() {
 		return [
-			id()->make(__('dash::dash.id'), 'id'),
+			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
+            text()->make(__("dash::dash.main_title"), 'title')
+            ->translatable([
+            'ar' => 'العربية',
+            'en' => 'English',
+            ]),
+
+            ckeditor()->make(__("dash::dash.content"), 'content')
+            ->translatable([
+            'ar' => 'العربية',
+            'en' => 'English',
+            ])->hideInIndex()->default('null'),
+
+            image()->make(__("dash::dash.image"),'image')->default('null')
+            ->accept('image/*'),
 		];
+
 	}
 
 	/**

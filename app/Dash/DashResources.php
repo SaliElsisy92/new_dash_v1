@@ -14,5 +14,7 @@ return [
     \App\Dash\Resources\Service_subTitles::class,
     \App\Dash\Resources\ManPowerServices::class,
     \App\Dash\Resources\ManPowerServices_subTitles::class,
+    \App\Dash\Resources\ManagementServices::class,
+    \App\Dash\Resources\ManagementServices_subTitles::class,
     // Users End//
 ];

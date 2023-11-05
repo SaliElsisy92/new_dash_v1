@@ -135,5 +135,8 @@ return [
     'last_updates'=>'Last Updates',
     'awards'=>'Awards',
     "subtitle"=>"SubTitle",
-    "post" => "Post"
+    "post" => "Post",
+    "management services" =>"Management Services",
+    "management services titles"=>"Management Services Titles",
+    "management services subtitles"=>"Management Services Subtitles"
 ];

@@ -8,5 +8,6 @@ return [
     "Solutions" => "Solution",
     "Services" => 'Services',
     "ManPowerServices"=>"ManPower Services",
-    'post'=>"Post"
+    'post'=>"Post" ,
+    "ManagementServices" =>"Management Services"
 ];

@@ -1,3 +1,4 @@
 {
-    "SolutionsModule": true
+    "SolutionsModule": true,
+    "FrontendModule": true
 }

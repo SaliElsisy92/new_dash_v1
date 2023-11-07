@@ -1,14 +1,15 @@
 <?php
 namespace App\Dash\Resources;
 use Dash\Resource;
+use App\Models\Management;
 
 class ManagementServices_subTitles extends Resource {
-	
+
 	/**
 	 * define Model of resource
 	 * @param Model Class
-	 */ 
-	public static $model = \App\Models\ManagementServices_subTitle::class ;
+	 */
+	public static $model = \App\Models\Managementsubtitle::class ;
 
 
 	/**
@@ -25,7 +26,7 @@ class ManagementServices_subTitles extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'ManagementServices_subTitles'; 
+	public static $group = 'ManagementServices';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -52,7 +53,7 @@ class ManagementServices_subTitles extends Resource {
 	 */
 	public static $search = [
 		'id',
-		'name',
+
 	];
 
 	/**
@@ -61,14 +62,16 @@ class ManagementServices_subTitles extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [];
+	public static $searchWithRelation = [
+        'subtitleLangAll' => ['sub_title']
+    ];
 
 	/**
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
 	public static function customName() {
-		return 'ManagementServices_subTitles';
+		return  __("dash::dash.management services subtitles");
 	}
 
 	/**
@@ -85,7 +88,26 @@ class ManagementServices_subTitles extends Resource {
 	 */
 	public function fields() {
 		return [
-			id()->make(__('dash::dash.id'), 'id'),
+			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
+            select()->make(__("dash::dash.main_title"),'parent_id')
+            ->options(Management::all()->pluck('title','id')->toArray())->hideInIndex(),
+
+
+
+             text()->make(__("dash::dash.subtitle"), 'sub_title')
+             ->translatable([
+             'ar' => 'العربية',
+             'en' => 'English',
+             ]),
+
+             ckeditor()->make(__("dash::dash.content"), 'content')
+             ->translatable([
+             'ar' => 'العربية',
+             'en' => 'English',
+             ])->hideInIndex(),
+
+             image()->make(__("dash::dash.image"),'image')
+
 		];
 	}
 

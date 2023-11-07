@@ -8,5 +8,12 @@ return [
     "Solutions" => "الحلول",
     "Services" => 'الخدمات',
     "ManPowerServices"=>"خدمات الطاقه البشريه",
-    'post' => "المنشورات"
+    'post' => "المنشورات",
+    'site'  =>  'البيانات الاساسيه',
+    'seo'  =>  'محركات البحث',
+    "Solutions" => "الحلول",
+    "Services" => 'الخدمات',
+    "ManPowerServices"=>"خدمات الطاقه البشريه",
+    'post' => "المنشورات",
+    "ManagementServices" => "اداره الخدمات",
 ];

@@ -119,7 +119,10 @@ return [
     "services subtitles" =>"عناوين فرعيه خاصه بالخدمات",
     "manpower titles"=>"عناوين الخدمات البشريه",
     "manpower subtitles"=>"عناوين فرعيه خاصه بخدمات البشريه",
-    "post" => "المنشورات"
+    "post" => "المنشورات",
+    "management services" =>"اداره الخدمات",
+    "management services titles"=>"عناوين اداره الخدمات",
+    "management services subtitles"=>"عناوين فرعيه خاصه باداره الخدمات"
 
 
 

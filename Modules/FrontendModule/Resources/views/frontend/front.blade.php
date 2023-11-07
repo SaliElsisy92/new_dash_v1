@@ -96,27 +96,32 @@
 
                     <!-- Sub Categories -->
                     <div class="sub-categories">
-                        <div class="hexagon">
-                            <span class="hex-title" data-tippy-content="Cyber Security"><i
-                                    class="fa-solid fa-unlock"></i></span>
 
-                            <!-- Sub Sub Categories -->
-                            <div class="sub-sub-category">
-                                <div class="hexagon" data-id="emailSecurity">
-                                    <span class="hex-title" data-tippy-content="Email Security"><i
-                                            class="fa-regular fa-envelope"></i></span>
-                                </div>
-                                <div class="hexagon" data-id="risk">
-                                    <span class="hex-title" data-tippy-content="Risk & Compliance"><i
-                                            class="fa-solid fa-asterisk"></i></span>
-                                </div>
+                        @foreach ($solutions as $solution)
+                            <div class="hexagon">
+
+                                <span class="hex-title" data-tippy-content="{{ $solution->title }}"><i
+                                        class="fa-solid fa-unlock"></i></span>
+
+
+                                <!-- Sub Sub Categories -->
+                                @foreach ($solution->sub_title as $subtitle)
+                                    <div class="sub-sub-category">
+                                        <div class="hexagon" data-id="emailSecurity">
+                                            <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                    class="fa-regular fa-envelope"></i></span>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+
                             </div>
-                        </div>
+                        @endforeach
 
-                        <div class="hexagon">
+                        <!--   <div class="hexagon">
                             <span class="hex-title" data-tippy-content="IT Management"><i
                                     class="fa-solid fa-network-wired"></i></span>
-                            <!-- Sub Sub Categories -->
+                            Sub Sub Categories
                             <div class="sub-sub-category">
                                 <div class="hexagon" data-id="itManagement">
                                     <span class="hex-title" data-tippy-content="IT Management & Analytics"><i
@@ -127,7 +132,7 @@
                                             class="fa-solid fa-shield-halved"></i></span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="hexagon main-hexagon animated">

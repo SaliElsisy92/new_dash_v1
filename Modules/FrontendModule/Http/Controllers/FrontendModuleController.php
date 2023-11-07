@@ -18,8 +18,9 @@ class FrontendModuleController extends Controller
      */
     public function index()
     {
-        // here we will return the all data in the tables
-        return view('frontendmodule::frontend.front');
+        $solutions = Solution::with('sub_title','titleLangAll')->get();
+       // dd($solutions);
+        return view('frontendmodule::frontend.front')->with(['solutions'=>$solutions]);
     }
 
     /**

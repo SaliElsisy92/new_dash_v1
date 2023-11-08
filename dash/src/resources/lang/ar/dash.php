@@ -122,7 +122,9 @@ return [
     "post" => "المنشورات",
     "management services" =>"اداره الخدمات",
     "management services titles"=>"عناوين اداره الخدمات",
-    "management services subtitles"=>"عناوين فرعيه خاصه باداره الخدمات"
+    "management services subtitles"=>"عناوين فرعيه خاصه باداره الخدمات",
+    "about_us titles" => "عناوين من نحن",
+    "about_us subtitles" => "عناوين فرعيه من نحن"
 
 
 

@@ -138,5 +138,7 @@ return [
     "post" => "Post",
     "management services" =>"Management Services",
     "management services titles"=>"Management Services Titles",
-    "management services subtitles"=>"Management Services Subtitles"
+    "management services subtitles"=>"Management Services Subtitles",
+    "about_us titles" => "About_us Titles",
+    "about_us subtitles" => "About_us Subtitles"
 ];

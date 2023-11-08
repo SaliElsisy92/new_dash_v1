@@ -9,5 +9,6 @@ return [
     "Services" => 'الخدمات',
     "ManPowerServices"=>"خدمات الطاقه البشريه",
     'post' => "المنشورات",
-    "ManagementServices" => "اداره الخدمات"
+    "ManagementServices" => "اداره الخدمات",
+    "About_us" => "من نحن"
 ];

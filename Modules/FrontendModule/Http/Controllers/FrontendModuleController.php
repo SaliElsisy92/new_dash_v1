@@ -19,8 +19,16 @@ class FrontendModuleController extends Controller
     public function index()
     {
         $solutions = Solution::with('sub_title','titleLangAll')->get();
-       // dd($solutions);
-        return view('frontendmodule::frontend.front')->with(['solutions'=>$solutions]);
+        $services  = Service::with('sub_title','titleLangAll')->get();
+        $management_services = Management::with('sub_title','titleLangAll')->get();
+        $manpower_services   = ManPowerService::with('sub_title','titleLangAll')->get();
+      //  dd($management_services);
+        return view('frontendmodule::frontend.front')->with([
+            'solutions'=> $solutions,
+            'services'=> $services,
+            'management_services'=> $management_services,
+            'manpower_services'=> $manpower_services
+        ]);
     }
 
     /**

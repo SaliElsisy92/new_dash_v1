@@ -107,7 +107,7 @@
                                 <!-- Sub Sub Categories -->
                                 @foreach ($solution->sub_title as $subtitle)
                                     <div class="sub-sub-category">
-                                        <div class="hexagon" data-id="emailSecurity">
+                                        <div class="hexagon" data-id="{{ 'solution' . $subtitle->id }}">
                                             <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
                                                     class="fa-regular fa-envelope"></i></span>
                                         </div>
@@ -118,29 +118,36 @@
                             </div>
                         @endforeach
 
-                        <!--   <div class="hexagon">
-                            <span class="hex-title" data-tippy-content="IT Management"><i
-                                    class="fa-solid fa-network-wired"></i></span>
-                            Sub Sub Categories
-                            <div class="sub-sub-category">
-                                <div class="hexagon" data-id="itManagement">
-                                    <span class="hex-title" data-tippy-content="IT Management & Analytics"><i
-                                            class="fa-solid fa-network-wired"></i></span>
-                                </div>
-                                <div class="hexagon" data-id="securityInfo">
-                                    <span class="hex-title" data-tippy-content="Security Information"><i
-                                            class="fa-solid fa-shield-halved"></i></span>
-                                </div>
-                            </div>
-                        </div> -->
+
                     </div>
                 </div>
+
                 <div class="hexagon main-hexagon animated">
                     <span class="hex-title" data-tippy-content="Services"><i class="fa-solid fa-gears"></i></span>
                     <div class="sub-categories">
-                        <div class="hexagon"></div>
-                        <div class="hexagon"></div>
-                        <div class="hexagon"></div>
+
+                        @foreach ($services as $service)
+                            <div class="hexagon">
+
+                                <span class="hex-title" data-tippy-content="{{ $service->title }}"><i
+                                        class="fa-solid fa-unlock"></i></span>
+
+
+                                <!-- Sub Sub Categories -->
+                                @foreach ($service->sub_title as $subtitle)
+                                    <div class="sub-sub-category">
+                                        <div class="hexagon" data-id="{{ 'service' . $subtitle->id }}">
+                                            <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                    class="fa-regular fa-envelope"></i></span>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        @endforeach
+
+
                     </div>
                 </div>
 
@@ -152,136 +159,151 @@
                 <div class="hexagon main-hexagon animated">
                     <span class="hex-title" data-tippy-content="Man Power Services"><i
                             class="fa-solid fa-user-gear"></i></span>
+
+                    <!-- Sub Categories -->
+                    <div class="sub-categories">
+
+                        @foreach ($manpower_services as $manpower_service)
+                            <div class="hexagon">
+
+                                <span class="hex-title" data-tippy-content="{{ $manpower_service->title }}"><i
+                                        class="fa-solid fa-unlock"></i></span>
+
+
+                                <!-- Sub Sub Categories -->
+                                @foreach ($manpower_service->sub_title as $subtitle)
+                                    <div class="sub-sub-category">
+                                        <div class="hexagon" data-id="{{ 'manpower' . $subtitle->id }}">
+                                            <span class="hex-title"
+                                                data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                    class="fa-regular fa-envelope"></i></span>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        @endforeach
+
+
+                    </div>
                 </div>
                 <div class="hexagon main-hexagon animated">
                     <span class="hex-title" data-tippy-content="Management Services"><i
                             class="fa-solid fa-users-gear"></i></span>
+
+                    <!-- Sub Categories -->
+                    <div class="sub-categories">
+
+                        @foreach ($management_services as $managent_service)
+                            <div class="hexagon">
+
+                                <span class="hex-title" data-tippy-content="{{ $managent_service->title }}"><i
+                                        class="fa-solid fa-unlock"></i></span>
+
+
+                                <!-- Sub Sub Categories -->
+                                @foreach ($managent_service->sub_title as $subtitle)
+                                    <div class="sub-sub-category">
+                                        <div class="hexagon" data-id="{{ 'management' . $subtitle->id }}">
+                                            <span class="hex-title"
+                                                data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                    class="fa-regular fa-envelope"></i></span>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        @endforeach
+
+
+                    </div>
+
                 </div>
                 <div class="hexagon main-hexagon animated">
                     <span class="hex-title"><i class="fa-brands fa-app-store"></i></span>
                 </div>
             </div>
 
-            <!-- Right Side -->
+
+
             <div class="right-side">
                 <div id="content">
-                    <div class="tab-content" id="careers">
-                        <h1 class="main-title">Careers</h1>
-                        <div class="desc">
-                            <p>
-                                this is sub sub ipsum dolor sit amet, consectetur adipisicing
-                                elit. Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempora impedit amet ratione vitae, aliquam
-                                doloremque libero eos quam et alias veritatis, pariatur.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempor.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-content" id="contact">
-                        <h1 class="main-title">Contact Us</h1>
-                    </div>
-                    <div class="tab-content" id="vision">
-                        <h1 class="main-title">Our Vision</h1>
-                        <div class="desc">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempora impedit amet ratione vitae, aliquam
-                                doloremque libero eos quam et alias veritatis, pariatur.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempor.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-content" id="mission">
-                        <h1 class="main-title">Our Mission</h1>
-                        <div class="desc">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempora impedit amet ratione vitae, aliquam
-                                doloremque libero eos quam et alias veritatis, pariatur.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempor.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-content" id="news">
-                        <h1 class="main-title">News &amp; Events</h1>
-                        <div class="desc">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempora impedit amet ratione vitae, aliquam
-                                doloremque libero eos quam et alias veritatis, pariatur.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempor.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-content" id="team">
-                        <h1 class="main-title">Our Team</h1>
-                        <div class="desc">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempora impedit amet ratione vitae, aliquam
-                                doloremque libero eos quam et alias veritatis, pariatur.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempor.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-content" id="emailSecurity">
-                        <h1 class="main-title">Email Security</h1>
-                        <div class="desc">
-                            <p>
-                                this is email psum dolor sit amet, consectetur adipisicing
-                                elit. Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempora impedit amet ratione vitae, aliquam
-                                doloremque libero eos quam et alias veritatis, pariatur.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempor.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tab-content" id="risk">
-                        <h1 class="main-title">Risk &amp; Compliance</h1>
-                        <div class="desc">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempora impedit amet ratione vitae, aliquam
-                                doloremque libero eos quam et alias veritatis, pariatur.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus harum laborum unde! Quod nobis necessitatibus
-                                consequatur tempor.
-                            </p>
-                        </div>
-                    </div>
+
+                    @foreach ($services as $service)
+                        @foreach ($service->sub_title as $service_subtitle)
+                            <div class="tab-content" id="{{ 'service' . $service_subtitle->id }}">
+                                <h1 class="main-title">{{ $service_subtitle->sub_title }}
+                                </h1>
+                                <div class="desc">
+                                    <p>
+                                        {{ $service_subtitle->content }}
+                                    </p>
+
+                                </div>
+                            </div>
+                        @endforeach
+                    @endforeach
+
+
+
+                    @foreach ($solutions as $solution)
+                        @foreach ($solution->sub_title as $solution_subtitle)
+                            <div class="tab-content" id="{{ 'solution' . $solution_subtitle->id }}">
+                                <h1 class="main-title">{{ $solution_subtitle->sub_title }}
+                                </h1>
+                                <div class="desc">
+                                    <p>
+                                        {{ $solution_subtitle->content }}
+                                    </p>
+
+                                </div>
+                            </div>
+                        @endforeach
+                    @endforeach
+
+
+
+
+                    @foreach ($manpower_services as $manpower_service)
+                        @foreach ($manpower_service->sub_title as $subtitle)
+                            <div class="tab-content" id="{{ 'manpower' . $subtitle->id }}">
+                                <h1 class="main-title">{{ $subtitle->sub_title }}
+                                </h1>
+                                <div class="desc">
+                                    <p>
+                                        {{ $subtitle->content }}
+                                    </p>
+
+                                </div>
+                            </div>
+                        @endforeach
+                    @endforeach
+
+                    @foreach ($management_services as $manag_service)
+                        @foreach ($manag_service->sub_title as $manag_subtitle)
+                            <div class="tab-content" id="{{ 'management' . $manag_subtitle->id }}">
+                                <h1 class="main-title">{{ $manag_subtitle->sub_title }}
+                                </h1>
+                                <div class="desc">
+                                    <p>
+                                        {{ $manag_subtitle->content }}
+                                    </p>
+
+                                </div>
+                            </div>
+                        @endforeach
+                    @endforeach
+
+
+
+
                 </div>
             </div>
+
+
+
         </div>
     </section>
 </body>

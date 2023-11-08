@@ -1,8 +1,35 @@
 <html lang="en">
 
 <head>
+    <!--start  seo tages -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="{{$seo_info->keys??''}}">
+            <meta name="description" content=" {{$seo_info->desc??''}}">
+            <meta name="author" content="{{$seo_info->author??''}}">
+            <meta name="robots" content="index,follow">
+            <meta itemprop="name" content="{{$seo_info->name }}">
+            <meta itemprop="description" content="{{$seo_info->desc}}">
+            <meta property="og:title" content="{{$seo_info->name}}">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="{{$seo_info->url??'#'}}">
+            <meta property="og:description" content="{{$seo_info->desc}}">
+            <meta property="og:site_name" content="pioneer">
+
+             <meta property="og:image" content="{{($seo_info!=null)?asset('images/seo/'.$seo_info->image):asset('images/img/logo.svg')}}" />
+
+
+                <meta name="twitter:site" content="http://sitelink.com">
+                <meta name="twitter:title" content="{{$seo_info->name}}">
+                <meta name="twitter:description" content="{{$seo_info->desc}}">
+
+                    <meta name="twitter:image" content="{{($seo_info!=null)?asset('images/seo/'.$seo_info->image):asset('images/img/logo.svg')}}">
+
+
+
+      		  <link rel="canonical" href="{{$seo_info->url??'#'}}">
+    <!--end  seo tages -->
+
     <title>Modern Pioneers</title>
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"

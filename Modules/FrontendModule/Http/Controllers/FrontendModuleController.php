@@ -11,6 +11,7 @@ use App\Models\Management;
 use App\Models\ManPowerService;
 use App\Models\About;
 
+use App\Models\seo;
 class FrontendModuleController extends Controller
 {
     /**
@@ -25,13 +26,15 @@ class FrontendModuleController extends Controller
         $manpower_services   = ManPowerService::with('sub_title','titleLangAll')->get();
         $abouts  = About::with('sub_title','titleLangAll')->get();
 
+        $seo_info = seo::where('id',1)->first();
       //  dd($management_services);
         return view('frontendmodule::frontend.front')->with([
             'solutions'=> $solutions,
             'services'=> $services,
             'management_services'=> $management_services,
             'manpower_services'=> $manpower_services,
-            'abouts'=> $abouts
+            'abouts'=> $abouts,
+            'seo_info'=>$seo_info
         ]);
     }
 

@@ -316,6 +316,7 @@
                                 <div class="desc">
                                     <p>
                                         {{ $manag_subtitle->content }}
+                                       
                                     </p>
 
                                 </div>

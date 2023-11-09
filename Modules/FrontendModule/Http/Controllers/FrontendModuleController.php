@@ -9,6 +9,8 @@ use App\Models\Solution;
 use App\Models\Service;
 use App\Models\Management;
 use App\Models\ManPowerService;
+use App\Models\About;
+
 use App\Models\seo;
 class FrontendModuleController extends Controller
 {
@@ -22,6 +24,8 @@ class FrontendModuleController extends Controller
         $services  = Service::with('sub_title','titleLangAll')->get();
         $management_services = Management::with('sub_title','titleLangAll')->get();
         $manpower_services   = ManPowerService::with('sub_title','titleLangAll')->get();
+        $abouts  = About::with('sub_title','titleLangAll')->get();
+
         $seo_info = seo::where('id',1)->first();
       //  dd($management_services);
         return view('frontendmodule::frontend.front')->with([
@@ -29,6 +33,7 @@ class FrontendModuleController extends Controller
             'services'=> $services,
             'management_services'=> $management_services,
             'manpower_services'=> $manpower_services,
+            'abouts'=> $abouts,
             'seo_info'=>$seo_info
         ]);
     }

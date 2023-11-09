@@ -9,5 +9,6 @@ return [
     "Services" => 'Services',
     "ManPowerServices"=>"ManPower Services",
     'post'=>"Post" ,
-    "ManagementServices" =>"Management Services"
+    "ManagementServices" =>"Management Services",
+    "About_us" => "About_us"
 ];

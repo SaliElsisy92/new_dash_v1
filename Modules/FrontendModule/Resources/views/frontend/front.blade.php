@@ -42,84 +42,65 @@
 
 <body>
     <section class="home-wrapper">
+        <div class="d-flex order-lg-2 my-auto ms-auto">
+
+            <div class="mb-0 navbar navbar-expand-lg navbar-nav-right responsive-navbar navbar-dark p-0">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                    <div class="d-flex ms-auto">
+
+
+                        @if (!empty($DASHBOARD_LANGUAGES) && count($DASHBOARD_LANGUAGES) > 1)
+                            <div class="dropdown header-flags">
+
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
+                                    @foreach ($DASHBOARD_LANGUAGES as $key => $value)
+                                        <a href="{{ url($DASHBOARD_PATH . '/change/language/' . $key) }}"
+                                            class="dropdown-item d-flex">
+                                            <div class="d-flex">
+                                                <span class="my-auto">{{ $value }}</span>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="page-container">
             <!-- Hexagon -->
 
             <div class="hexagon-container opened">
                 <div class="hexagon main-hexagon animated">
-                    <span class="hex-title" data-tippy-content="About Us"><i
+                    <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.about_us')><i
                             class="fa-regular fa-address-card"></i></span>
+
 
                     <!-- Sub Categories -->
                     <div class="sub-categories">
-                        <div class="hexagon">
-                            <span class="hex-title" data-tippy-content="Career"><i class="fa-solid fa-eject"></i></span>
+                        @foreach ($abouts as $about)
+                            <div class="hexagon">
+                                <span class="hex-title" data-tippy-content="{{ $about->title }}"><i
+                                        class="fa-solid fa-eject"></i></span>
 
-                            <!-- Sub Sub Categories -->
-                            <div class="sub-sub-category">
-                                <div class="hexagon" data-id="careers">
-                                    <span class="hex-title" data-tippy-content="Career"><i
-                                            class="fa-solid fa-eject"></i></span>
-                                </div>
-                            </div>
-                        </div>
+                                @foreach ($about->sub_title as $subtitle)
+                                    <div class="sub-sub-category">
+                                        <div class="hexagon" data-id="{{ 'about' . $subtitle->id }}">
+                                            <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                    class="fa-regular fa-envelope"></i></span>
+                                        </div>
 
-                        <div class="hexagon">
-                            <span class="hex-title" data-tippy-content="Contact Us"><i
-                                    class="fa-solid fa-headset"></i></span>
-                            <!-- Sub Sub Categories -->
-                            <div class="sub-sub-category">
-                                <div class="hexagon" data-id="contact">
-                                    <span class="hex-title" data-tippy-content="Contact Us"><i
-                                            class="fa-solid fa-headset"></i></span>
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
-                        </div>
+                        @endforeach
 
-                        <div class="hexagon">
-                            <span class="hex-title" data-tippy-content="About Us"><i
-                                    class="fa-regular fa-address-card"></i></span>
-                            <!-- Sub Sub Categories -->
-                            <div class="sub-sub-category">
-                                <div class="hexagon" data-id="vision">
-                                    <span class="hex-title" data-tippy-content="Our Vision"><i
-                                            class="fa-solid fa-arrows-to-eye"></i></span>
-                                </div>
-                                <div class="hexagon" data-id="mission">
-                                    <span class="hex-title" data-tippy-content="Our Mission"><i
-                                            class="fa-solid fa-bullseye"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="hexagon">
-                            <span class="hex-title" data-tippy-content="News & Events"><i
-                                    class="fa-regular fa-newspaper"></i></span>
-                            <!-- Sub Sub Categories -->
-                            <div class="sub-sub-category">
-                                <div class="hexagon" data-id="news">
-                                    <span class="hex-title" data-tippy-content="News & Events"><i
-                                            class="fa-regular fa-newspaper"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="hexagon">
-                            <span class="hex-title" data-tippy-content="Our Team"><i
-                                    class="fa-solid fa-people-group"></i></span>
-                            <!-- Sub Sub Categories -->
-                            <div class="sub-sub-category">
-                                <div class="hexagon" data-id="team">
-                                    <span class="hex-title" data-tippy-content="Our Team"><i
-                                            class="fa-solid fa-people-group"></i></span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="hexagon main-hexagon animated">
-                    <span class="hex-title" data-tippy-content="Solutions"><i class="fa-solid fa-dna"></i></span>
+                    <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.solutions')><i class="fa-solid fa-dna"></i></span>
 
                     <!-- Sub Categories -->
                     <div class="sub-categories">
@@ -150,7 +131,8 @@
                 </div>
 
                 <div class="hexagon main-hexagon animated">
-                    <span class="hex-title" data-tippy-content="Services"><i class="fa-solid fa-gears"></i></span>
+                    <span class="hex-title" data-tippy-content="@lang('frontendmodule::front.services')"><i
+                            class="fa-solid fa-gears"></i></span>
                     <div class="sub-categories">
 
                         @foreach ($services as $service)
@@ -184,7 +166,7 @@
                 </div>
 
                 <div class="hexagon main-hexagon animated">
-                    <span class="hex-title" data-tippy-content="Man Power Services"><i
+                    <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.manpower_services')><i
                             class="fa-solid fa-user-gear"></i></span>
 
                     <!-- Sub Categories -->
@@ -201,8 +183,7 @@
                                 @foreach ($manpower_service->sub_title as $subtitle)
                                     <div class="sub-sub-category">
                                         <div class="hexagon" data-id="{{ 'manpower' . $subtitle->id }}">
-                                            <span class="hex-title"
-                                                data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                            <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
                                                     class="fa-regular fa-envelope"></i></span>
                                         </div>
 
@@ -216,7 +197,7 @@
                     </div>
                 </div>
                 <div class="hexagon main-hexagon animated">
-                    <span class="hex-title" data-tippy-content="Management Services"><i
+                    <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.management_services')><i
                             class="fa-solid fa-users-gear"></i></span>
 
                     <!-- Sub Categories -->
@@ -233,8 +214,7 @@
                                 @foreach ($managent_service->sub_title as $subtitle)
                                     <div class="sub-sub-category">
                                         <div class="hexagon" data-id="{{ 'management' . $subtitle->id }}">
-                                            <span class="hex-title"
-                                                data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                            <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
                                                     class="fa-regular fa-envelope"></i></span>
                                         </div>
 
@@ -273,6 +253,20 @@
                         @endforeach
                     @endforeach
 
+                    @foreach ($abouts as $about)
+                        @foreach ($about->sub_title as $about_subtitle)
+                            <div class="tab-content" id="{{ 'about' . $about_subtitle->id }}">
+                                <h1 class="main-title">{{ $about_subtitle->sub_title }}
+                                </h1>
+                                <div class="desc">
+                                    <p>
+                                        {{ $about_subtitle->content }}
+                                    </p>
+
+                                </div>
+                            </div>
+                        @endforeach
+                    @endforeach
 
 
                     @foreach ($solutions as $solution)

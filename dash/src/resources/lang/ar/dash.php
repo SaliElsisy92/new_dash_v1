@@ -124,7 +124,17 @@ return [
     "management services titles"=>"عناوين اداره الخدمات",
     "management services subtitles"=>"عناوين فرعيه خاصه باداره الخدمات",
     "about_us titles" => "عناوين من نحن",
-    "about_us subtitles" => "عناوين فرعيه من نحن"
+    "about_us subtitles" => "عناوين فرعيه من نحن",
+    "solutions&services_titles" =>"عناوين رئيسيه",
+    "solutions&services_subtitles" => "عناوين فرعيه",
+    "Consultation titles"=>"عناوين رئيسيه للمؤتمرات",
+    "Consultation subtitles" =>"عناوين فرعيه للمؤتمرات",
+    "vendor titles" => "عناوين رئيسيه للخبراء",
+    "vendor subtitles" => "عناوين فرعيه للخبراء",
+    "retail titles" => "عناوين رئيسيه لبيع التجزئه",
+    "retail subtitles" => "عناوين فرعيه لبيع التجزئه",
+
+
 
 
 

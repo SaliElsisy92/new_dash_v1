@@ -27,7 +27,7 @@ class FrontendModuleController extends Controller
         $abouts  = About::with('sub_title','titleLangAll')->get();
 
         $seo_info = seo::where('id',1)->first();
-      //  dd($management_services);
+       // dd($abouts);
         return view('frontendmodule::frontend.front')->with([
             'solutions'=> $solutions,
             'services'=> $services,

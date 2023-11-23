@@ -4,7 +4,7 @@ return [
 	 * App NAME
 	 * @param string
 	 */
-	'APP_NAME' => env('APP_NAME', 'dash'),
+	'APP_NAME' => env('APP_NAME', 'Pioneer Company'),
 
     /**
 	 *  FILE SYSTEM DISK DRIVER YOU CAN Use public,s3

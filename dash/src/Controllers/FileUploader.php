@@ -28,6 +28,7 @@ function upload($request, $path, $typeid = 'image', $id = null) {
 			$full_path = Storage::disk(env('FILESYSTEM_DRIVER', 's3'))->url($filePath);
 		} else {
 			$full_path = $file->store($path);
+
 		}
 
 		$upload = FileManagerModel::create([

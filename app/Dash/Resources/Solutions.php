@@ -30,7 +30,7 @@ class Solutions extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'Solutions';
+	public static $group = 'Solutions&Services';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -43,7 +43,7 @@ class Solutions extends Resource {
 	 * you can use font awesome icons LIKE (<i class="fa fa-users"></i>)
 	 * @param static property string
 	 */
-	public static $icon = ''; // put <i> tag or icon name
+	public static $icon = '<i class="fa fa-edit"></i>'; // put <i> tag or icon name
 
 	/**
 	 * title static property to labels in Rows,Show,Forms
@@ -75,7 +75,7 @@ class Solutions extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return __("dash::dash.solution_titles");
+		return __("dash::dash.solutions&services_titles");
 	}
 
 

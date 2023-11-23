@@ -25,7 +25,7 @@ class ManagementServices extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'ManagementServices';
+	public static $group = 'Retail';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -38,7 +38,7 @@ class ManagementServices extends Resource {
 	 * you can use font awesome icons LIKE (<i class="fa fa-users"></i>)
 	 * @param static property string
 	 */
-	public static $icon = ''; // put <i> tag or icon name
+	public static $icon = '<i class="fa fa-edit"></i>'; // put <i> tag or icon name
 
 	/**
 	 * title static property to labels in Rows,Show,Forms
@@ -70,7 +70,7 @@ class ManagementServices extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return  __("dash::dash.management services titles");
+		return  __("dash::dash.retail titles");
 	}
 
 	/**
@@ -101,6 +101,7 @@ class ManagementServices extends Resource {
             ])->hideInIndex()->default('null'),
 
             image()->make(__("dash::dash.image"),'image')->default('null')
+            ->rule('image')
             ->accept('image/*'),
 		];
 

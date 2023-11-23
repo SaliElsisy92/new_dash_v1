@@ -38,7 +38,7 @@ class About_us extends Resource {
 	 * you can use font awesome icons LIKE (<i class="fa fa-users"></i>)
 	 * @param static property string
 	 */
-	public static $icon = ''; // put <i> tag or icon name
+	public static $icon = '<i class="fa fa-edit"></i>'; // put <i> tag or icon name
 
 	/**
 	 * title static property to labels in Rows,Show,Forms

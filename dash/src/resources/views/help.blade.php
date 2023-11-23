@@ -1,4 +1,4 @@
-<div class="row mt-4 m-0">
+{{-- <div class="row mt-4 m-0">
     <div class="col-md-6 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
@@ -84,4 +84,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}

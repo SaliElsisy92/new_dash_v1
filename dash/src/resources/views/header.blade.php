@@ -2,10 +2,14 @@
     <div class="container-fluid main-container">
         <div class="d-flex">
             <a class="header-brand" href="{{ dash('/') }}">
-                <img src="{{ $DASHBOARD_ICON }}" class="header-brand-img desktop-lgo" style="width:131px;" alt="{{ env('APP_NAME') }}">
-                <img src="{{ $DASHBOARD_ICON }}" class="header-brand-img dark-logo" style="width:131px;" alt="{{ env('APP_NAME') }}">
-                <img src="{{ $DASHBOARD_ICON }}" class="header-brand-img mobile-logo" style="width:131px;" alt="{{ env('APP_NAME') }}">
-                <img src="{{ $DASHBOARD_ICON }}" class="header-brand-img darkmobile-logo" style="width:131px;" alt="{{ env('APP_NAME') }}">
+                <img src="{{ $DASHBOARD_ICON }}" class="header-brand-img desktop-lgo" style="width:131px;"
+                    alt="{{ env('APP_NAME') }}">
+                <img src="{{ $DASHBOARD_ICON }}" class="header-brand-img dark-logo" style="width:131px;"
+                    alt="{{ env('APP_NAME') }}">
+                <img src="{{ $DASHBOARD_ICON }}" class="header-brand-img mobile-logo" style="width:131px;"
+                    alt="{{ env('APP_NAME') }}">
+                <img src="{{ $DASHBOARD_ICON }}" class="header-brand-img darkmobile-logo" style="width:131px;"
+                    alt="{{ env('APP_NAME') }}">
             </a>
             <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
                 <a class="open-toggle" mode="open" href="javascript:void(0);">
@@ -16,53 +20,58 @@
                 </a>
             </div>
             @push('js')
-            <script>
-                $(document).on('click','.close-toggle,.open-toggle',function(){
-                    var sidenavtoggle = $(this).attr('mode');
-                    if(sidenavtoggle != ''){
-                        var full_width = $(window).outerWidth() <= 1024;
-                        var sidenavtoggle = !full_width?sidenavtoggle:'close';
-                        $.ajax({
-                            url:'{{ dash("sidenav/toggled") }}/'+sidenavtoggle,
-                            type:'get',
+                <script>
+                    $(document).on('click', '.close-toggle,.open-toggle', function() {
+                        var sidenavtoggle = $(this).attr('mode');
+                        if (sidenavtoggle != '') {
+                            var full_width = $(window).outerWidth() <= 1024;
+                            var sidenavtoggle = !full_width ? sidenavtoggle : 'close';
+                            $.ajax({
+                                url: '{{ dash('sidenav/toggled') }}/' + sidenavtoggle,
+                                type: 'get',
 
-                        });
-                    }
-                });
-            </script>
-        @endpush
+                            });
+                        }
+                    });
+                </script>
+            @endpush
             <div class="mt-0">
                 @include('dash::searchs')
 
             </div><!-- SEARCH -->
             <div class="d-flex order-lg-2 my-auto ms-auto">
-                <button class="navbar-toggler nav-link icon navresponsive-toggler vertical-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler nav-link icon navresponsive-toggler vertical-icon ms-auto" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
+                    aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
                 </button>
-                <div class="mb-0 navbar navbar-expand-lg navbar-nav-right responsive-navbar navbar-dark p-0" style="z-index: 99;">
+                <div class="mb-0 navbar navbar-expand-lg navbar-nav-right responsive-navbar navbar-dark p-0"
+                    style="z-index: 99;">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
                         <div class="d-flex ms-auto">
-                            <a class="nav-link  icon p-0 nav-link-lg d-lg-none navsearch"  href="javascript:void(0);" data-bs-toggle="search">
+                            <a class="nav-link  icon p-0 nav-link-lg d-lg-none navsearch" href="javascript:void(0);"
+                                data-bs-toggle="search">
                                 <i class="feather feather-search search-icon header-icon"></i>
                             </a>
 
                             @if (!empty($DASHBOARD_LANGUAGES) && count($DASHBOARD_LANGUAGES) > 1)
-                            <div class="dropdown header-flags">
-                                <a class="nav-link border" data-bs-toggle="dropdown">
-                                    <small class="fs-6 p-2">
-                                        {{ $DASHBOARD_LANGUAGES[app()->getLocale()] }}
-                                    </small>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
-                                @foreach ($DASHBOARD_LANGUAGES as $key => $value)
-                                    <a href="{{ url($DASHBOARD_PATH . '/change/language/' . $key) }}" class="dropdown-item d-flex">
-                                        <div class="d-flex">
-                                            <span class="my-auto">{{ $value }}</span>
-                                        </div>
+                                <div class="dropdown header-flags">
+                                    <a class="nav-link border" data-bs-toggle="dropdown">
+                                        <small class="fs-6 p-2">
+                                            {{ $DASHBOARD_LANGUAGES[app()->getLocale()] }}
+                                        </small>
                                     </a>
-                                @endforeach
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
+                                        @foreach ($DASHBOARD_LANGUAGES as $key => $value)
+                                            <a href="{{ url($DASHBOARD_PATH . '/change/language/' . $key) }}"
+                                                class="dropdown-item d-flex">
+                                                <div class="d-flex">
+                                                    <span class="my-auto">{{ $value }}</span>
+                                                </div>
+                                            </a>
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
                             @endif
 
                             <div class="dropdown  d-flex">
@@ -72,12 +81,12 @@
                                 </a>
                                 @push('js')
                                     <script>
-                                        $(document).on('click','.dark-layout,.light-layout',function(){
+                                        $(document).on('click', '.dark-layout,.light-layout', function() {
                                             var dark_mode = $(this).attr('mode');
-                                            if(dark_mode != ''){
+                                            if (dark_mode != '') {
                                                 $.ajax({
-                                                    url:'{{ dash("darkmode") }}/'+dark_mode,
-                                                    type:'get'
+                                                    url: '{{ dash('darkmode') }}/' + dark_mode,
+                                                    type: 'get'
                                                 });
                                             }
                                         });
@@ -88,7 +97,8 @@
                             <div class="dropdown header-fullscreen">
                                 <a class="nav-link icon full-screen-link">
                                     <i class="feather feather-maximize fullscreen-button fullscreen header-icons"></i>
-                                    <i class="feather feather-minimize fullscreen-button exit-fullscreen header-icons"></i>
+                                    <i
+                                        class="feather feather-minimize fullscreen-button exit-fullscreen header-icons"></i>
                                 </a>
                             </div>
                             {{--  <div class="dropdown header-message">
@@ -184,33 +194,37 @@
                                     </div>
                                 </div>
                             </div>  --}}
-                            @if(!empty($dash_notifications) && count($dash_notifications))
-                             @php
-    $DashtotalCount=0;
-    foreach($dash_notifications as $dash_count){
-    $DashtotalCount = $DashtotalCount + $dash_count::unreadCount();
-    }
-    @endphp
+                            @if (!empty($dash_notifications) && count($dash_notifications))
+                                @php
+                                    $DashtotalCount = 0;
+                                    foreach ($dash_notifications as $dash_count) {
+                                        $DashtotalCount = $DashtotalCount + $dash_count::unreadCount();
+                                    }
+                                @endphp
 
-                            <div class="dropdown header-notify">
-                                <a class="nav-link icon" data-bs-toggle="sidebar-right" data-bs-target=".sidebar-right">
-                                    <i class="feather feather-bell header-icon"></i>
-                                    {{--  <span class="bg-dot"></span>  --}}
-                                    <span class="badge badge-danger side-badge {{ $DashtotalCount == 0 ?'d-none':'' }}">{{ $DashtotalCount }}</span>
-                                </a>
-                            </div>
+                                <div class="dropdown header-notify">
+                                    <a class="nav-link icon" data-bs-toggle="sidebar-right"
+                                        data-bs-target=".sidebar-right">
+                                        <i class="feather feather-bell header-icon"></i>
+                                        {{--  <span class="bg-dot"></span>  --}}
+                                        <span
+                                            class="badge badge-danger side-badge {{ $DashtotalCount == 0 ? 'd-none' : '' }}">{{ $DashtotalCount }}</span>
+                                    </a>
+                                </div>
                             @endif
                             <div class="dropdown profile-dropdown">
-                                <a  href="javascript:void(0);" class="nav-link pe-1 ps-0 leading-none" data-bs-toggle="dropdown">
+                                <a href="javascript:void(0);" class="nav-link pe-1 ps-0 leading-none"
+                                    data-bs-toggle="dropdown">
                                     <span>
-                                        <img src="{{ admin()?->photo??url('dashboard/assets/img/admin.png') }}" alt="img" class="avatar avatar-md bradius">
+                                        <img src="{{ admin()?->photo ?? url('dashboard/assets/img/bg.jpeg') }}"
+                                            alt="img" class="avatar avatar-md bradius">
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
-                                    <div class="p-3 text-center border-bottom">
+                                    {{-- <div class="p-3 text-center border-bottom">
                                         <a href="{{dash('admin/profile')}}" class="text-center user pb-0 font-weight-bold">{{ admin()->name }}</a>
                                         <p class="text-center user-semi-title">{{ admin()?->admingroup?->name }}</p>
-                                    </div>
+                                    </div> --}}
                                     {{--  <a class="dropdown-item d-flex" href="profile-1.html">
                                         <i class="feather feather-user me-3 fs-16 my-auto"></i>
                                         <div class="mt-1">Profile</div>

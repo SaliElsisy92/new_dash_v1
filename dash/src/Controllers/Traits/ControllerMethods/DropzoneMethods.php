@@ -112,7 +112,7 @@ function delete_file() {
 			// New Full path
             if(!empty($file->path)){
 
-        
+
 			if (Storage::disk(config('dash.FILESYSTEM_DISK'))->exists($file->path)) {
 				$full_path = resourceShortName($file_type).'/'.$new_id.'/'.$file->file;
 				Storage::disk(config('dash.FILESYSTEM_DISK'))->move($file->full_path, $full_path);

@@ -26,7 +26,7 @@ class Service_subTitles extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'Services';
+	public static $group = 'Consultation';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -39,7 +39,7 @@ class Service_subTitles extends Resource {
 	 * you can use font awesome icons LIKE (<i class="fa fa-users"></i>)
 	 * @param static property string
 	 */
-	public static $icon = ''; // put <i> tag or icon name
+	public static $icon = '<i class="fa fa-edit"></i>'; // put <i> tag or icon name
 
 	/**
 	 * title static property to labels in Rows,Show,Forms
@@ -71,7 +71,7 @@ class Service_subTitles extends Resource {
 	 * @return string
 	 */
 	public static function customName() {
-		return  __("dash::dash.services subtitles");;
+		return  __("dash::dash.Consultation subtitles");;
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Service_subTitles extends Resource {
              'en' => 'English',
              ])->hideInIndex(),
 
-             image()->make(__("dash::dash.image"),'image')
+             image()->make(__("dash::dash.image"),'image')->accept('image/*')
 		];
 	}
 

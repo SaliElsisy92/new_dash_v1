@@ -16,5 +16,10 @@ return [
     "ManPowerServices"=>"خدمات الطاقه البشريه",
     'post' => "المنشورات",
     "ManagementServices" => "اداره الخدمات",
-    "About_us" => "من نحن"
+    "About_us" => "من نحن",
+    "Consultation" => "المؤتمرات",
+    "Vendor Expertise" =>"الخبراء",
+    "Retail" =>"بيع بالتجزئه",
+    "Contact Us" =>"الاتصال بنا"
+
 ];

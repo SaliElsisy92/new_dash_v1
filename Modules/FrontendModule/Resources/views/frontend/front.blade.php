@@ -4,30 +4,32 @@
     <!--start  seo tages -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="{{$seo_info->keys??''}}">
-            <meta name="description" content=" {{$seo_info->desc??''}}">
-            <meta name="author" content="{{$seo_info->author??''}}">
-            <meta name="robots" content="index,follow">
-            <meta itemprop="name" content="{{$seo_info->name }}">
-            <meta itemprop="description" content="{{$seo_info->desc}}">
-            <meta property="og:title" content="{{$seo_info->name}}">
-            <meta property="og:type" content="website">
-            <meta property="og:url" content="{{$seo_info->url??'#'}}">
-            <meta property="og:description" content="{{$seo_info->desc}}">
-            <meta property="og:site_name" content="pioneer">
+    <meta name="keywords" content="{{ $seo_info->keys ?? '' }}">
+    <meta name="description" content=" {{ $seo_info->desc ?? '' }}">
+    <meta name="author" content="{{ $seo_info->author ?? '' }}">
+    <meta name="robots" content="index,follow">
+    <meta itemprop="name" content="{{ $seo_info->name }}">
+    <meta itemprop="description" content="{{ $seo_info->desc }}">
+    <meta property="og:title" content="{{ $seo_info->name }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ $seo_info->url ?? '#' }}">
+    <meta property="og:description" content="{{ $seo_info->desc }}">
+    <meta property="og:site_name" content="pioneer">
 
-             <meta property="og:image" content="{{($seo_info!=null)?asset('images/seo/'.$seo_info->image):asset('images/img/logo.svg')}}" />
-
-
-                <meta name="twitter:site" content="http://sitelink.com">
-                <meta name="twitter:title" content="{{$seo_info->name}}">
-                <meta name="twitter:description" content="{{$seo_info->desc}}">
-
-                    <meta name="twitter:image" content="{{($seo_info!=null)?asset('images/seo/'.$seo_info->image):asset('images/img/logo.svg')}}">
+    <meta property="og:image"
+        content="{{ $seo_info != null ? asset('images/seo/' . $seo_info->image) : asset('images/img/logo.svg') }}" />
 
 
+    <meta name="twitter:site" content="http://sitelink.com">
+    <meta name="twitter:title" content="{{ $seo_info->name }}">
+    <meta name="twitter:description" content="{{ $seo_info->desc }}">
 
-      		  <link rel="canonical" href="{{$seo_info->url??'#'}}">
+    <meta name="twitter:image"
+        content="{{ $seo_info != null ? asset('images/seo/' . $seo_info->image) : asset('images/img/logo.svg') }}">
+
+
+
+    <link rel="canonical" href="{{ $seo_info->url ?? '#' }}">
     <!--end  seo tages -->
 
     <title>Modern Pioneers</title>
@@ -77,6 +79,7 @@
                             class="fa-regular fa-address-card"></i></span>
 
 
+
                     <!-- Sub Categories -->
                     <div class="sub-categories">
                         @foreach ($abouts as $about)
@@ -84,19 +87,20 @@
                                 <span class="hex-title" data-tippy-content="{{ $about->title }}"><i
                                         class="fa-solid fa-eject"></i></span>
 
-                                @foreach ($about->sub_title as $subtitle)
-                                    <div class="sub-sub-category">
+
+                                <div class="sub-sub-category">
+                                    @foreach ($about->sub_title as $subtitle)
                                         <div class="hexagon" data-id="{{ 'about' . $subtitle->id }}">
                                             <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
                                                     class="fa-regular fa-envelope"></i></span>
                                         </div>
+                                    @endforeach
+                                </div>
 
-                                    </div>
-                                @endforeach
                             </div>
                         @endforeach
-
                     </div>
+
                 </div>
 
                 <div class="hexagon main-hexagon animated">
@@ -113,15 +117,16 @@
 
 
                                 <!-- Sub Sub Categories -->
-                                @foreach ($solution->sub_title as $subtitle)
-                                    <div class="sub-sub-category">
+
+                                <div class="sub-sub-category">
+                                    @foreach ($solution->sub_title as $subtitle)
                                         <div class="hexagon" data-id="{{ 'solution' . $subtitle->id }}">
                                             <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
                                                     class="fa-regular fa-envelope"></i></span>
                                         </div>
+                                    @endforeach
+                                </div>
 
-                                    </div>
-                                @endforeach
 
                             </div>
                         @endforeach
@@ -143,15 +148,16 @@
 
 
                                 <!-- Sub Sub Categories -->
-                                @foreach ($service->sub_title as $subtitle)
-                                    <div class="sub-sub-category">
+
+                                <div class="sub-sub-category">
+                                    @foreach ($service->sub_title as $subtitle)
                                         <div class="hexagon" data-id="{{ 'service' . $subtitle->id }}">
                                             <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
                                                     class="fa-regular fa-envelope"></i></span>
                                         </div>
+                                    @endforeach
+                                </div>
 
-                                    </div>
-                                @endforeach
 
                             </div>
                         @endforeach
@@ -180,15 +186,17 @@
 
 
                                 <!-- Sub Sub Categories -->
-                                @foreach ($manpower_service->sub_title as $subtitle)
-                                    <div class="sub-sub-category">
+
+                                <div class="sub-sub-category">
+                                    @foreach ($manpower_service->sub_title as $subtitle)
                                         <div class="hexagon" data-id="{{ 'manpower' . $subtitle->id }}">
-                                            <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                            <span class="hex-title"
+                                                data-tippy-content="{{ $subtitle->sub_title }}"><i
                                                     class="fa-regular fa-envelope"></i></span>
                                         </div>
+                                    @endforeach
+                                </div>
 
-                                    </div>
-                                @endforeach
 
                             </div>
                         @endforeach
@@ -211,15 +219,17 @@
 
 
                                 <!-- Sub Sub Categories -->
-                                @foreach ($managent_service->sub_title as $subtitle)
-                                    <div class="sub-sub-category">
+
+                                <div class="sub-sub-category">
+                                    @foreach ($managent_service->sub_title as $subtitle)
                                         <div class="hexagon" data-id="{{ 'management' . $subtitle->id }}">
-                                            <span class="hex-title" data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                            <span class="hex-title"
+                                                data-tippy-content="{{ $subtitle->sub_title }}"><i
                                                     class="fa-regular fa-envelope"></i></span>
                                         </div>
+                                    @endforeach
+                                </div>
 
-                                    </div>
-                                @endforeach
 
                             </div>
                         @endforeach

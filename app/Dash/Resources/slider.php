@@ -2,13 +2,13 @@
 namespace App\Dash\Resources;
 use Dash\Resource;
 
-class seo extends Resource {
-
+class slider extends Resource {
+	
 	/**
 	 * define Model of resource
 	 * @param Model Class
-	 */
-	public static $model = \App\Models\Seo::class ;
+	 */ 
+	public static $model = \App\Models\Slider::class ;
 
 
 	/**
@@ -16,7 +16,7 @@ class seo extends Resource {
 	 * (viewAny,view,create,update,delete,forceDelete,restore) methods
 	 * @param static property as Policy Class
 	 */
-    public static $policy = \App\Policies\Custom::class;
+	//public static $policy = \App\Policies\UserPolicy::class ;
 
 	/**
 	 * define this resource in group to show in navigation menu
@@ -25,7 +25,7 @@ class seo extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'seo';
+	public static $group = 'slider'; 
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -38,7 +38,7 @@ class seo extends Resource {
 	 * you can use font awesome icons LIKE (<i class="fa fa-users"></i>)
 	 * @param static property string
 	 */
-	public static $icon = '<i class="fa fa-search"></i>'; // put <i> tag or icon name
+	public static $icon = '<i class="fa fa-image"></i>'; // put <i> tag or icon name
 
 	/**
 	 * title static property to labels in Rows,Show,Forms
@@ -52,7 +52,7 @@ class seo extends Resource {
 	 */
 	public static $search = [
 		'id',
-		'name',
+		'title',
 	];
 
 	/**
@@ -67,9 +67,9 @@ class seo extends Resource {
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
-    public static function customName() {
-        return __('dash.seo');
-    }
+	public static function customName() {
+		return  __("dash::dash.slider");
+	}
 
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
@@ -79,62 +79,29 @@ class seo extends Resource {
 		return [];
 	}
 
-    public static $paging=false;
-
 	/**
 	 * define fields by Helpers
 	 * @return array
 	 */
 	public function fields() {
-        return [
-            id()->make(__('dash::dash.id'), 'id') ->hideInIndex(),
-            text() ->make(__('dash::dash.url'), 'url')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex()
-            ,
-            text() ->make(__('dash::dash.author'), 'author')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            text() ->make(__('dash::dash.name'), 'name')
-                ->translatable([
-                    'ar' => 'العربية',
-                    'en' => 'English',
-                ])
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow(),
+		return [
+			id()->make(__('dash::dash.id'), 'id'),
+			
+            text()->make(__("dash::dash.main_title"), 'title')
+            ->translatable([
+            'ar' => 'العربية',
+            'en' => 'English',
+            ]),
 
-            ckeditor() ->make(__('dash::dash.desc'), 'desc')
-                ->translatable([
-                    'ar' => 'العربية',
-                    'en' => 'English',
-                ])
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            text() ->make(__('dash::dash.keys'), 'keys')
-                ->translatable([
-                    'ar' => 'العربية',
-                    'en' => 'English',
-                ])
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            // image()->make(__('dash::dash.image'), 'image')
-            //     ->path('storage//storage/app/improvement')
-            //     ->column(6)
-            //     ->accept('image/png', 'image/jpeg'),
+            text()->make(__("dash::dash.content"), 'desc')
+            ->translatable([
+            'ar' => 'العربية',
+            'en' => 'English',
+            ])->hideInIndex()->default('null'),
+
+			// image()->make(__("dash::dash.image"),'img')->default('null')
+			// ->accept('image/*'),
+
 			dropzone()->make('Upload Files', 'dropzone') 
 // (dropzone) this for id not using a columns in current model
 	          ->autoQueue(true)//true|false
@@ -147,8 +114,7 @@ class seo extends Resource {
 	        //   or 
 	        //   ->acceptedMimeTypes(['video/*', 'image/*']),
 
-
-        ];
+		];
 	}
 
 	/**

@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if(!Schema::hasTable('man_power_services')){
         Schema::create('man_power_services', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
             $table->timestamps();
         });
+    }
     }
 
     /**

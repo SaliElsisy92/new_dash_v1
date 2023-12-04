@@ -14,5 +14,7 @@ return [
     "Consultation" => "Consultation",
     "Vendor Expertise" =>"Vendor Expertise",
     "Retail" =>"Retail",
-    "Contact Us" =>"Contact Us"
+    "Contact Us" =>"Contact Us",
+	"website_data"=>"WebSite Data",
+    "slider"=>"Slider",
 ];

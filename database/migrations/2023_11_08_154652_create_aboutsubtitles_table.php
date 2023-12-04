@@ -10,7 +10,7 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    {       if(!Schema::hasTable('aboutsubtitles')){
         Schema::create('aboutsubtitles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("parent_id");
@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreign('parent_id')->references('id')->on('abouts')->onDelete('cascade');
             $table->timestamps();
         });
+    }
     }
 
     /**

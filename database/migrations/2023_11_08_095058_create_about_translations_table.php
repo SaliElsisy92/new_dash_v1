@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if(!Schema::hasTable('about_translations')){
         Schema::create('about_translations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("about_id");
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->unique(['about_id', 'locale']);
             $table->foreign('about_id')->references('id')->on('abouts')->onDelete('cascade');
         });
+    }
     }
 
     /**

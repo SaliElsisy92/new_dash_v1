@@ -2,13 +2,13 @@
 namespace App\Dash\Resources;
 use Dash\Resource;
 
-class seo extends Resource {
-
+class website_data extends Resource {
+	
 	/**
 	 * define Model of resource
 	 * @param Model Class
-	 */
-	public static $model = \App\Models\Seo::class ;
+	 */ 
+	public static $model = \App\Models\Website_data::class ;
 
 
 	/**
@@ -16,7 +16,7 @@ class seo extends Resource {
 	 * (viewAny,view,create,update,delete,forceDelete,restore) methods
 	 * @param static property as Policy Class
 	 */
-    public static $policy = \App\Policies\Custom::class;
+	 public static $policy = \App\Policies\Custom::class;
 
 	/**
 	 * define this resource in group to show in navigation menu
@@ -25,7 +25,7 @@ class seo extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'seo';
+	public static $group = 'website_data'; 
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
@@ -38,7 +38,7 @@ class seo extends Resource {
 	 * you can use font awesome icons LIKE (<i class="fa fa-users"></i>)
 	 * @param static property string
 	 */
-	public static $icon = '<i class="fa fa-search"></i>'; // put <i> tag or icon name
+	public static $icon = '<i class="fa fa-list"></i>'; // put <i> tag or icon name
 
 	/**
 	 * title static property to labels in Rows,Show,Forms
@@ -67,9 +67,9 @@ class seo extends Resource {
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
-    public static function customName() {
-        return __('dash.seo');
-    }
+	public static function customName() {
+		return __('dash.website_data');
+	}
 
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
@@ -78,64 +78,112 @@ class seo extends Resource {
 	public static function vertex() {
 		return [];
 	}
-
     public static $paging=false;
-
 	/**
 	 * define fields by Helpers
 	 * @return array
 	 */
 	public function fields() {
-        return [
-            id()->make(__('dash::dash.id'), 'id') ->hideInIndex(),
-            text() ->make(__('dash::dash.url'), 'url')
+		return [
+			id()->make(__('dash::dash.id'), 'id') ->hideInIndex(),
+            text() ->make(__('dash::dash.site_name'), 'site_name')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
+                ->ruleWhenCreate('string', 'min:3')
+                ->ruleWhenUpdate('string', 'min:3')
+                ->columnWhenCreate(6)
+                ->showInShow()
+				,
+
+				text() ->make(__('dash::dash.address'), 'address')
+                ->translatable([
+                    'ar' => 'العربية',
+                    'en' => 'English',
+                ])
+                ->ruleWhenCreate('string', 'min:3')
+                ->ruleWhenUpdate('string', 'min:3')
+                ->columnWhenCreate(6)
+                ->showInShow()
+				,
+				text() ->make(__('dash::dash.location'), 'location')
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
                 ->hideInIndex()
-            ,
-            text() ->make(__('dash::dash.author'), 'author')
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow()
-                ->hideInIndex(),
-            text() ->make(__('dash::dash.name'), 'name')
-                ->translatable([
-                    'ar' => 'العربية',
-                    'en' => 'English',
-                ])
-                ->ruleWhenCreate('string', 'min:4')
-                ->ruleWhenUpdate('string', 'min:4')
-                ->columnWhenCreate(6)
-                ->showInShow(),
+				,
 
-            ckeditor() ->make(__('dash::dash.desc'), 'desc')
-                ->translatable([
-                    'ar' => 'العربية',
-                    'en' => 'English',
-                ])
+				tel() ->make(__('dash::dash.phone'), 'phone')
+                ->ruleWhenCreate('required', 'min:10')
+                ->ruleWhenUpdate('required', 'min:10')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex()
+				, 
+
+				number() ->make(__('dash::dash.fax'), 'fax')->default('null')
+                ->ruleWhenCreate('required', 'min:4')
+                ->ruleWhenUpdate('required', 'min:4')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex()
+				,
+
+				email() ->make(__('dash::dash.email1'), 'email1')
+                ->ruleWhenCreate('required')
+                ->ruleWhenUpdate('required')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex()
+				,
+
+				email() ->make(__('dash::dash.email1'), 'email2')->default('null')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex()
+				,
+
+				text() ->make(__('dash::dash.facebook'), 'facebook')
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
-                ->hideInIndex(),
-            text() ->make(__('dash::dash.keys'), 'keys')
-                ->translatable([
-                    'ar' => 'العربية',
-                    'en' => 'English',
-                ])
+                ->hideInIndex()
+				,
+				text() ->make(__('dash::dash.linkedin'), 'linkedin')
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
-                ->hideInIndex(),
-            // image()->make(__('dash::dash.image'), 'image')
-            //     ->path('storage//storage/app/improvement')
-            //     ->column(6)
-            //     ->accept('image/png', 'image/jpeg'),
-			dropzone()->make('Upload Files', 'dropzone') 
+                ->hideInIndex()
+				,
+				text() ->make(__('dash::dash.instgram'), 'instgram')
+                ->ruleWhenCreate('string', 'min:4')
+                ->ruleWhenUpdate('string', 'min:4')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex()
+				,
+				text() ->make(__('dash::dash.twitter'), 'twitter')
+                ->ruleWhenCreate('string', 'min:4')
+                ->ruleWhenUpdate('string', 'min:4')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex()
+				,
+				text() ->make(__('dash::dash.whatsapp'), 'whatsapp')
+                ->ruleWhenCreate('string', 'min:4')
+                ->ruleWhenUpdate('string', 'min:4')
+                ->columnWhenCreate(6)
+                ->showInShow()
+                ->hideInIndex()
+				,
+				// image()->make(__("dash::dash.image"),'logo')->default('null')
+				// ->accept('image/*'),
+
+				dropzone()->make('Upload Files', 'dropzone') 
 // (dropzone) this for id not using a columns in current model
 	          ->autoQueue(true)//true|false
 	          ->maxFileSize(1000)//mb
@@ -143,12 +191,15 @@ class seo extends Resource {
 	          ->parallelUploads(20)//files
 	          ->thumbnailWidth(80)//px
 	          ->thumbnailHeight(80)//px
-	          ->acceptedMimeTypes('video/*', 'image/*'),
+	          ->acceptedMimeTypes('image/*'),
 	        //   or 
 	        //   ->acceptedMimeTypes(['video/*', 'image/*']),
 
 
-        ];
+		
+
+
+		];
 	}
 
 	/**

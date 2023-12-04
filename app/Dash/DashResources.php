@@ -5,7 +5,9 @@ return [
      \App\Dash\Resources\AdminGroups::class,
      \App\Dash\Resources\Admins::class,
      \App\Dash\Resources\Users::class,
+     \App\Dash\Resources\website_data::class,
     \App\Dash\Resources\seo::class,
+    \App\Dash\Resources\slider::class,
     \App\Dash\Resources\About_us::class,
     \App\Dash\Resources\About_us_subtitles::class,
     \App\Dash\Resources\Solutions::class,
@@ -16,6 +18,8 @@ return [
     \App\Dash\Resources\ManPowerServices_subTitles::class,
     \App\Dash\Resources\ManagementServices::class,
     \App\Dash\Resources\ManagementServices_subTitles::class,
+ 
+
 
     // Users End//
 ];

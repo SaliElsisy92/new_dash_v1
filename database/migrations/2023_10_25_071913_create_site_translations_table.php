@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if(!Schema::hasTable('site_translations')){
         Schema::create('site_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('site_id')->unsigned();
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->unique(['site_id', 'locale']);
             $table->foreign('site_id')->references('id')->on('sites')->onDelete('cascade');
         });
+    }
     }
 
     /**

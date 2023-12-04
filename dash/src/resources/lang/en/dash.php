@@ -148,5 +148,17 @@ return [
     "vendor titles" => "Vendor Expertise Titles",
     "vendor subtitles" => "Vendor Expertise Subtitles",
     "retail titles" => "Retail Titles",
-    "retail subtitles" => "Retail Subtitles"
+    "retail subtitles" => "Retail Subtitles",
+	"site_name"=>"Site Name",
+	"address"=>"Address",
+	"location"=>"location",
+	"phone"=>"Phone",
+	"fax"=>"Fax",
+	"email1"=>"Email",
+	"facebook"=>"facebook",
+	"linkedin"=>"linkedin",
+	"instgram"=>"instgram",
+	"twitter"=>"twitter",
+	"whatsapp"=>"whatsapp",
+	"slider"=>"Slider",
 ];

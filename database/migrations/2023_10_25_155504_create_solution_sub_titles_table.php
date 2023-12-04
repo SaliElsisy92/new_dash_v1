@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if(!Schema::hasTable('solution_sub_titles')){
         Schema::create('solution_sub_titles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("parent_id");
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->foreign('parent_id')->references('id')->on('solutions')->onDelete('cascade');
             $table->timestamps();
         });
+    }
 
 
     }

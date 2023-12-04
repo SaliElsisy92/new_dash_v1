@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if(!Schema::hasTable('solution_translations')){
-        Schema::create('solution_translations', function (Blueprint $table) {
+        if(!Schema::hasTable('slider_translations')){
+        Schema::create('slider_translations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("solution_id");
+            $table->integer('slider_id')->unsigned();
             $table->string('locale')->index();
             $table->string('title');
-            $table->text('content')->nullable();
-
-            $table->unique(['solution_id', 'locale']);
-            $table->foreign('solution_id')->references('id')->on('solutions')->onDelete('cascade');
+            $table->string('desc');
+            $table->index(['slider_id', 'locale'],'slider_id_local_unique');
+            $table->foreign('slider_id')->references('id')->on('sliders')->onDelete('cascade');
         });
     }
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('solution_translations');
+        Schema::dropIfExists('slider_translations');
     }
 };

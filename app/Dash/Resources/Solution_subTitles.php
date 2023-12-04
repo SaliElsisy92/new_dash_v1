@@ -3,6 +3,7 @@ namespace App\Dash\Resources;
 use Dash\Resource;
 use App\Dash\Resources\Solutions;
 use  App\Models\Solution;
+use  App\Models\Solution_subTitle;
 
 
 class Solution_subTitles extends Resource {
@@ -86,6 +87,12 @@ class Solution_subTitles extends Resource {
 		return [];
 	}
 
+    public function query($model) {
+
+        return Solution_subTitle::select('*')->with(['files' => fn($q) => $q->where('file_type', $model)]);
+       }
+
+
 	/**
 	 * define fields by Helpers
 	 * @return array
@@ -113,7 +120,8 @@ class Solution_subTitles extends Resource {
 
             image()->make(__("dash::dash.image"),'image')->accept('image/*'),
 
-            dropzone()->make('Upload Files', 'image')
+
+            dropzone()->make('Upload Files', 'dropzone')
             // (dropzone) this for id not using a columns in current model
                           ->autoQueue(true)//true|false
                           ->maxFileSize(1000)//mb
@@ -121,7 +129,10 @@ class Solution_subTitles extends Resource {
                           ->parallelUploads(20)//files
                           ->thumbnailWidth(80)//px
                           ->thumbnailHeight(80)//px
-                          ->acceptedMimeTypes('video/*', 'image/*'),
+                          ->acceptedMimeTypes('image/*')
+                          ->hideInIndex(),
+
+
 
 
 	   ];

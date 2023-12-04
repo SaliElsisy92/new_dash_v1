@@ -25,4 +25,8 @@ class Managementsubtitle extends Model
         public function subtitleLangAll() {
             return $this->hasMany(ManagementsubtitleTranslation::class, 'managementsubtitle_id');
         }
+
+        public function files() {
+        	return $this->morphMany(\Dash\Models\FileManagerModel::class , 'file');
+        }
 }

@@ -9,7 +9,7 @@ trait DropzoneMethods {
 	// Delete Files From Dropzone Library
 	public
 
-function delete_file() {
+    function delete_file() {
 		if (request("file_type") && request("file_id")) {
 			$file = $this->getFile(strval(request("file_type")), request("file_id"),request('id'));
 			if (!empty($file)) {

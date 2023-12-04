@@ -1,15 +1,14 @@
 <?php
 namespace App\Dash\Resources;
 use Dash\Resource;
-use App\Models\Service;
 
-class Service_subTitles extends Resource {
+class SolutionsubtitleTranslation extends Resource {
 
 	/**
 	 * define Model of resource
 	 * @param Model Class
 	 */
-	public static $model = \App\Models\Service_subTitle::class ;
+	public static $model = \App\Models\Solution_subTitleTranslation::class ;
 
 
 	/**
@@ -26,20 +25,20 @@ class Service_subTitles extends Resource {
 	 * and add this key directly users
 	 * @param static property
 	 */
-	public static $group = 'Consultation';
+	public static $group = 'SolutionsubtitleTranslation';
 
 	/**
 	 * show or hide resouce In Navigation Menu true|false
 	 * @param static property string
 	 */
-	public static $displayInMenu = true;
+	public static $displayInMenu = false;
 
 	/**
 	 * change icon in navigation menu
 	 * you can use font awesome icons LIKE (<i class="fa fa-users"></i>)
 	 * @param static property string
 	 */
-	public static $icon = '<i class="fa fa-edit"></i>'; // put <i> tag or icon name
+	public static $icon = ''; // put <i> tag or icon name
 
 	/**
 	 * title static property to labels in Rows,Show,Forms
@@ -53,7 +52,7 @@ class Service_subTitles extends Resource {
 	 */
 	public static $search = [
 		'id',
-
+		'name',
 	];
 
 	/**
@@ -62,16 +61,16 @@ class Service_subTitles extends Resource {
 	 * 	Example: method=> 'invoices'  => columns=>['title'],
 	 * @param static array
 	 */
-	public static $searchWithRelation = [
-        'subtitleLangAll' => ['sub_title']
-    ];
+	public static $searchWithRelation = [];
+
+
 
 	/**
 	 * if you need to custom resource name in menu navigation
 	 * @return string
 	 */
 	public static function customName() {
-		return  __("dash::dash.Consultation subtitles");;
+		return 'SolutionsubtitleTranslation';
 	}
 
 	/**
@@ -89,36 +88,11 @@ class Service_subTitles extends Resource {
 	public function fields() {
 		return [
 			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
-
-            select()->make(__("dash::dash.main_title"),'parent_id')
-            ->options(Service::all()->pluck('title','id')->toArray())->hideInIndex(),
-
-
-
-             text()->make(__("dash::dash.subtitle"), 'sub_title')
-             ->translatable([
-             'ar' => 'العربية',
-             'en' => 'English',
-             ]),
-
-             ckeditor()->make(__("dash::dash.content"), 'content')
-             ->translatable([
-             'ar' => 'العربية',
-             'en' => 'English',
-             ])->hideInIndex(),
-
-             image()->make(__("dash::dash.image"),'image')->accept('image/*'),
-
-             dropzone()->make('Upload Files', 'dropzone')
-            // (dropzone) this for id not using a columns in current model
-                          ->autoQueue(true)//true|false
-                          ->maxFileSize(1000)//mb
-                          ->maxFiles(30)// files
-                          ->parallelUploads(20)//files
-                          ->thumbnailWidth(80)//px
-                          ->thumbnailHeight(80)//px
-                          ->acceptedMimeTypes('image/*')
-                          ->hideInIndex(),
+            text()->make('sub_title', 'sub_title')
+            ->translatable([
+            'ar' => 'العربية',
+            'en' => 'English',
+            ]),
 		];
 	}
 

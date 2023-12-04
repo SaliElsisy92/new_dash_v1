@@ -4,6 +4,7 @@ use Dash\Resource;
 use App\Models\Solution;
 use App\Models\SolutionTranslation;
 use App\Dash\Resources\Solution_subTitles;
+use App\Dash\Resources\SolutionsubtitleTranslation;
 use  App\Models\Solution_subTitle;
 use Illuminate\Contracts\Database\Query\Builder;
 
@@ -79,7 +80,7 @@ class Solutions extends Resource {
 	}
 
 
-  /*   public function query($model) {
+    /* public function query($model) {
 
          $titles = Solution::select("*")->with([
             'sub_title' => function(){
@@ -87,9 +88,8 @@ class Solutions extends Resource {
             }
         ]);
 
-		return $titles;
-	}
- */
+     }*/
+
 	/**
 	 * you can define vertext in header of page like (Card,HTML,view blade)
 	 * @return array
@@ -120,10 +120,10 @@ class Solutions extends Resource {
 
             image()->make(__("dash::dash.image"),'image')->default('null')
             ->accept('image/*'),
+          // hasMany()->make('subtitles','sub_title',Solution_subTitles::class),
 
-         //  text()->make('sub','sub_title'),
-
-           // hasMany()->make('SubTitles', 'sub_title', Solution_subTitles::class ),
+            hasManyThrough()->make('subtitles', 'subtitles',SolutionsubtitleTranslation ::class)
+            ->hideInIndex(),
 
 
 

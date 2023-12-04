@@ -26,4 +26,8 @@ class Service_subtitle extends Model
             return $this->hasMany(Service_subTitleTranslation::class, 'service_subtitle_id');
         }
 
+        public function files() {
+        	return $this->morphMany(\Dash\Models\FileManagerModel::class , 'file');
+        }
+
 }

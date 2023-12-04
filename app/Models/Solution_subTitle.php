@@ -28,6 +28,13 @@ class Solution_subTitle extends Model
             return $this->hasMany(Solution_subTitleTranslation::class, 'solution_sub_title_id');
         }
 
+       public function files() {
+        	return $this->morphMany(\Dash\Models\FileManagerModel::class , 'file');
+        }
+
+
+
+
 
 
 }

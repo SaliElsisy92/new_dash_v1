@@ -12,7 +12,7 @@ class Solution_subTitleTranslation extends Model
 
 
     public $timestamps = false;
-    protected $fillable = ['solution_sub_title_id','sub_title', 'content'];
+    protected $fillable = ['sub_title','solution_sub_title_id', 'content'];
 
     public function subtitle() {
         return $this->belongsTo(Solution_subTitle::class);

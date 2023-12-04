@@ -25,4 +25,8 @@ class Aboutsubtitle extends Model
         public function subtitleLangAll() {
             return $this->hasMany(AboutsubTitleTranslation::class, 'aboutsubtitle_id');
         }
+
+        public function files() {
+        	return $this->morphMany(\Dash\Models\FileManagerModel::class , 'file');
+        }
 }

@@ -8,6 +8,8 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use App\Models\Solution_subTitle;
 use App\Models\SolutionTranslation;
+use App\Models\Solution_subTitleTranslation;
+
 
 class Solution extends Model implements TranslatableContract
 {
@@ -25,6 +27,18 @@ class Solution extends Model implements TranslatableContract
         public function titleLangAll() {
             return $this->hasMany(SolutionTranslation::class, 'solution_id');
         }
+
+        public function subtitles() {
+            return $this->hasManyThrough(
+                Solution_subTitleTranslation::class ,
+                Solution_subTitle::class ,
+                'parent_id',
+                'solution_sub_title_id',
+
+
+            );
+       }
+
 
 
 }

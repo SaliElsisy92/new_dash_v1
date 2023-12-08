@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if(!Schema::hasTable('services')){
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
             $table->timestamps();
         });
+    }
     }
 
     /**

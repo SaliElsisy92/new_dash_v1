@@ -16,7 +16,7 @@ class seo extends Resource {
 	 * (viewAny,view,create,update,delete,forceDelete,restore) methods
 	 * @param static property as Policy Class
 	 */
-    public static $policy = \App\Policies\Custom::class ;
+    public static $policy = \App\Policies\Custom::class;
 
 	/**
 	 * define this resource in group to show in navigation menu
@@ -131,10 +131,23 @@ class seo extends Resource {
                 ->columnWhenCreate(6)
                 ->showInShow()
                 ->hideInIndex(),
-            image()->make(__('dash::dash.image'), 'image')
-                ->path('storage//storage/app/improvement')
-                ->column(6)
-                ->accept('image/png', 'image/jpeg'),
+            // image()->make(__('dash::dash.image'), 'image')
+            //     ->path('storage//storage/app/improvement')
+            //     ->column(6)
+            //     ->accept('image/png', 'image/jpeg'),
+			dropzone()->make('Upload Files', 'dropzone') 
+// (dropzone) this for id not using a columns in current model
+	          ->autoQueue(true)//true|false
+	          ->maxFileSize(1000)//mb
+	          ->maxFiles(30)// files
+	          ->parallelUploads(20)//files
+	          ->thumbnailWidth(80)//px
+	          ->thumbnailHeight(80)//px
+	          ->acceptedMimeTypes('video/*', 'image/*'),
+	        //   or 
+	        //   ->acceptedMimeTypes(['video/*', 'image/*']),
+
+
         ];
 	}
 

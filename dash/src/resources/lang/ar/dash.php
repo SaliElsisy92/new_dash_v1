@@ -133,6 +133,19 @@ return [
     "vendor subtitles" => "عناوين فرعيه للخبراء",
     "retail titles" => "عناوين رئيسيه لبيع التجزئه",
     "retail subtitles" => "عناوين فرعيه لبيع التجزئه",
+	"site_name"=>"اسم الموقع",
+	"address"=>"العنوان",
+	"location"=>"الموقع",
+	"phone"=>"الهاتف",
+	"fax"=>"الفاكس",
+	"email1"=>"الايميل",
+	"facebook"=>"فيس بوك",
+	"linkedin"=>"لينكد ان",
+	"instgram"=>"انستجرام",
+	"twitter"=>"تويتر",
+	"whatsapp"=>"واتساب",
+	"slider"=>"سليدر الرئيسيه",
+    "website"=>'الموقع الالكترونى'
 
 
 

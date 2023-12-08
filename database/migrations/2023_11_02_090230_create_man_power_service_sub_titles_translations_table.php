@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if(!Schema::hasTable('man_power_service_sub_titles_translations')){
         Schema::create('man_power_service_sub_titles_translations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("man_power_service_sub_title_id");
@@ -22,6 +23,8 @@ return new class extends Migration
 
             $table->foreign('man_power_service_sub_title_id')->references('id')->on('man_power_service_sub_titles')->onDelete('cascade');
         });
+
+    }
     }
 
     /**

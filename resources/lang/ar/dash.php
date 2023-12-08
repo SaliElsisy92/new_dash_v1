@@ -20,6 +20,7 @@ return [
     "Consultation" => "المؤتمرات",
     "Vendor Expertise" =>"الخبراء",
     "Retail" =>"بيع بالتجزئه",
-    "Contact Us" =>"الاتصال بنا"
-
+    "Contact Us" =>"الاتصال بنا",
+	"website_data"=>"بيانات الموقع",
+    "slider"=>"سليدر الرئيسيه",
 ];

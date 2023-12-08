@@ -12,4 +12,7 @@ class seo extends Model implements TranslatableContract
     use HasFactory,Translatable;
     public $translatedAttributes = ['name', 'desc','keys'];
     protected $fillable = ['author','url','image'];
+    public function files() {
+        return $this->morphMany(\Dash\Models\FileManagerModel::class , 'file');
+     }
 }

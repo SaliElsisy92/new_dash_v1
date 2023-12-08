@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if(!Schema::hasTable('seo_translations')){
         Schema::create('seo_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('seo_id')->unsigned();
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->unique(['seo_id', 'locale']);
             $table->foreign('seo_id')->references('id')->on('seos')->onDelete('cascade');
         });
+    }
     }
 
     /**

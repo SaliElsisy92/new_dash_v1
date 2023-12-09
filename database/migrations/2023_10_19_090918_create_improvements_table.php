@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('desc_en');
             $table->string('keys_ar');
             $table->string('keys_en');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -19,6 +19,8 @@ class About_us_subtitles extends Resource {
 	 */
 	//public static $policy = \App\Policies\UserPolicy::class ;
 
+	public static $policy = \App\Policies\showCustom::class;
+
 	/**
 	 * define this resource in group to show in navigation menu
 	 * if you need to translate a dynamic name
@@ -100,13 +102,13 @@ class About_us_subtitles extends Resource {
             'en' => 'English',
             ]),
 
-            ckeditor()->make(__("dash::dash.content"), 'content')
+            textarea()->make(__("dash::dash.content"), 'content')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
             ])->hideInIndex(),
 
-            image()->make(__("dash::dash.image"),'image')->accept('image/*'),
+            // image()->make(__("dash::dash.image"),'image')->accept('image/*'),
             dropzone()->make('Upload Files', 'dropzone')
             // (dropzone) this for id not using a columns in current model
                           ->autoQueue(true)//true|false

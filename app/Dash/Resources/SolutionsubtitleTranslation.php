@@ -17,6 +17,7 @@ class SolutionsubtitleTranslation extends Resource {
 	 * @param static property as Policy Class
 	 */
 	//public static $policy = \App\Policies\UserPolicy::class ;
+	public static $policy = \App\Policies\showCustom::class;
 
 	/**
 	 * define this resource in group to show in navigation menu

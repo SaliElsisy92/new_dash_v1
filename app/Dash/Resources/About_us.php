@@ -94,14 +94,14 @@ class About_us extends Resource {
             'en' => 'English',
             ]),
 
-            ckeditor()->make(__("dash::dash.content"), 'content')
+            textarea()->make(__("dash::dash.content"), 'content')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
             ])->hideInIndex()->default('null'),
 
-            image()->make(__("dash::dash.image"),'image')->default('null')
-            ->accept('image/*'),
+            // image()->make(__("dash::dash.image"),'image')->default('null')
+            // ->accept('image/*'),
 
 		];
 	}

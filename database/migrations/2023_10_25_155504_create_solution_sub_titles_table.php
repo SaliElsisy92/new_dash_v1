@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('solution_sub_titles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("parent_id");
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->foreign('parent_id')->references('id')->on('solutions')->onDelete('cascade');
             $table->timestamps();
         });

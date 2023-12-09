@@ -87,13 +87,13 @@ class slider extends Resource {
 		return [
 			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
 
-            ckeditor()->make(__("dash::dash.title"), 'title')
+            text()->make(__("dash::dash.title"), 'title')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
             ]),
 
-            ckeditor()->make(__("dash::dash.content"), 'desc')
+            textarea()->make(__("dash::dash.content"), 'desc')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',

@@ -99,7 +99,7 @@ public static $policy = \App\Policies\Custom::class ;
                 ->showInShow()
                 ->hideInIndex()
                 ->hideInUpdate(),
-            ckeditor() ->make(__('dash::dash.about'), 'about')
+				textarea() ->make(__('dash::dash.about'), 'about')
                 ->translatable([
                     'ar' => 'العربية',
                     'en' => 'English',

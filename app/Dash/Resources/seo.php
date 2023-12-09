@@ -111,7 +111,7 @@ class seo extends Resource {
                 ->columnWhenCreate(6)
                 ->showInShow(),
 
-            ckeditor() ->make(__('dash::dash.desc'), 'desc')
+				textarea() ->make(__('dash::dash.desc'), 'desc')
                 ->translatable([
                     'ar' => 'العربية',
                     'en' => 'English',
@@ -131,21 +131,18 @@ class seo extends Resource {
                 ->columnWhenCreate(6)
                 ->showInShow()
                 ->hideInIndex(),
-            // image()->make(__('dash::dash.image'), 'image')
-            //     ->path('storage//storage/app/improvement')
-            //     ->column(6)
-            //     ->accept('image/png', 'image/jpeg'),
-			dropzone()->make('Upload Files', 'dropzone') 
-// (dropzone) this for id not using a columns in current model
-	          ->autoQueue(true)//true|false
-	          ->maxFileSize(1000)//mb
-	          ->maxFiles(30)// files
-	          ->parallelUploads(20)//files
-	          ->thumbnailWidth(80)//px
-	          ->thumbnailHeight(80)//px
-	          ->acceptedMimeTypes('video/*', 'image/*'),
-	        //   or 
-	        //   ->acceptedMimeTypes(['video/*', 'image/*']),
+   
+
+				// image()->make(__('dash::dash.image'), 'image')
+				// ->path('seo/{id}')
+				// ->column(6)
+				// ->accept('image/png', 'image/jpeg'),
+
+
+
+				fileUpload()
+				->make(__("dash::dash.image"), 'image')
+				->accept('image/*') // mimeTypes
 
 
         ];

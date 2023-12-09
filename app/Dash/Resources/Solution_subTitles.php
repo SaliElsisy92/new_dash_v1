@@ -21,6 +21,7 @@ class Solution_subTitles extends Resource {
 	 * @param static property as Policy Class
 	 */
 	//public static $policy = \App\Policies\UserPolicy::class ;
+	public static $policy = \App\Policies\showCustom::class;
 
 	/**
 	 * define this resource in group to show in navigation menu
@@ -112,7 +113,7 @@ class Solution_subTitles extends Resource {
             'en' => 'English',
             ]),
 
-            ckeditor()->make(__("dash::dash.content"), 'content')
+            textarea()->make(__("dash::dash.content"), 'content')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',

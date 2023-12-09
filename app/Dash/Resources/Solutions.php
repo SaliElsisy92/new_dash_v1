@@ -112,7 +112,7 @@ class Solutions extends Resource {
             'en' => 'English',
             ]),
 
-            ckeditor()->make(__("dash::dash.content"), 'content')
+            textarea()->make(__("dash::dash.content"), 'content')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',

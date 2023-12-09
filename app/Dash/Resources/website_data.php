@@ -174,25 +174,10 @@ class website_data extends Resource {
                 ->showInShow()
 
 				,
-				// image()->make(__("dash::dash.image"),'logo')->default('null')
-				// ->accept('image/*'),
 
-				dropzone()->make('Upload Files', 'dropzone')
-// (dropzone) this for id not using a columns in current model
-	          ->autoQueue(true)//true|false
-	          ->maxFileSize(1000)//mb
-	          ->maxFiles(30)// files
-	          ->parallelUploads(20)//files
-	          ->thumbnailWidth(80)//px
-	          ->thumbnailHeight(80)//px
-	          ->acceptedMimeTypes('image/*')
-              ->hideInIndex(),
-	        //   or
-	        //   ->acceptedMimeTypes(['video/*', 'image/*']),
-
-
-
-
+				fileUpload()
+				->make(__("dash::dash.image"), 'logo')
+				->accept('image/*') // mimeTypes
 
 		];
 	}

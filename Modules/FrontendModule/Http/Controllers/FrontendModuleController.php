@@ -12,6 +12,7 @@ use App\Models\ManPowerService;
 use App\Models\About;
 use App\Models\website_data;
 use App\Models\seo;
+use App\Models\slider;
 
 class FrontendModuleController extends Controller
 {
@@ -21,15 +22,19 @@ class FrontendModuleController extends Controller
      */
     public function index()
     {
-        $solutions = Solution::with('sub_title','titleLangAll')->get();
+        $solutions = Solution::with([
+        'sub_title' =>fn($q) => $q->with('files'),
+        'titleLangAll'])->get();
+
         $services  = Service::with('sub_title','titleLangAll')->get();
         $management_services = Management::with('sub_title','titleLangAll')->get();
         $manpower_services   = ManPowerService::with('sub_title','titleLangAll')->get();
         $abouts  = About::with('sub_title','titleLangAll')->get();
         $webData = website_data::select("*")->first();
+        $slider = slider::select('*')->get();
 
         $seo_info = seo::where('id',1)->first();
-       //dd($webData);
+      // dd($solutions);
         return view('frontendmodule::frontend.front2')->with([
             'solutions'=> $solutions,
             'services'=> $services,
@@ -37,7 +42,8 @@ class FrontendModuleController extends Controller
             'manpower_services'=> $manpower_services,
             'abouts'=> $abouts,
             'seo_info'=>$seo_info,
-            'webdata' => $webData
+            'webdata' => $webData,
+            "slider" => $slider
         ]);
     }
 

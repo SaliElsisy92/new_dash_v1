@@ -88,40 +88,24 @@
         <div class="main-slider">
             <div class="main-banner-wrapper">
                 <div class="banner-slides owl-theme owl-carousel">
-                    <div class="slide slide-one" style="background-image: url(assets/img/slider/1.jpg)">
-                        <div class="container">
-                            <div class="row banner-content">
-                                <div class="col-lg-6">
-                                    <h2 class="banner-title">
-                                        Revolutionize Your Business, Unleash The Future!
-                                    </h2>
-                                    <p class="banner-text">
-                                        Rawand Tech, your premier destination for dynamic services
-                                        in the realm of technology. As a leading programming
-                                        company, we specialize in delivering cutting-edge
-                                        solutions tailored to your business needs.
-                                    </p>
+                    @foreach ($slider as $sl)
+                        <div class="slide slide-one" style="background-image:{{ $sl->file }}">
+                            <div class="container">
+                                <div class="row banner-content">
+                                    <div class="col-lg-6">
+                                        <h2 class="banner-title">
+                                            {{ $sl->title }}
+                                        </h2>
+                                        <p class="banner-text">
+                                            {{ $sl->desc }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="slide slide-one" style="background-image: url(assets/img/slider/2.jpg)">
-                        <div class="container">
-                            <div class="row banner-content">
-                                <div class="col-lg-6">
-                                    <h2 class="banner-title">
-                                        Effictively Integrate Your Business Functions
-                                    </h2>
-                                    <p class="banner-text">
-                                        Rawand Tech, your premier destination for dynamic services
-                                        in the realm of technology. As a leading programming
-                                        company, we specialize in delivering cutting-edge
-                                        solutions tailored to your business needs.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
                 <div class="carousel-btn-block banner-carousel-btn">
                     <span class="carousel-btn left-btn"><i class="fa-solid fa-angle-left"></i></span>
@@ -152,7 +136,7 @@
                                             <div class="hexagon" data-id="{{ 'about' . $subtitle->id }}">
                                                 <span class="hex-title"
                                                     data-tippy-content="{{ $subtitle->sub_title }}"><i
-                                                        class="fa-solid fa-eject"></i></span>
+                                                        class="fa-regular fa-envelope"></i></span>
                                             </div>
                                         @endforeach
                                     </div>
@@ -160,50 +144,54 @@
                             @endforeach
                         </div>
                     </div>
+
+
                     <div class="hexagon main-hexagon animated">
-                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.solutions')><i
+                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.solutions&services')><i
                                 class="fa-solid fa-dna"></i></span>
                         <div class="sub-categories">
-                            <div class="hexagon">
-                                <span class="hex-title" data-tippy-content="Cyber Security"><i
-                                        class="fa-solid fa-unlock"></i></span>
-                                <!-- Sub Sub Categories -->
-                                <div class="sub-sub-category">
-                                    <div class="hexagon" data-id="emailSecurity">
-                                        <span class="hex-title" data-tippy-content="Email Security"><i
-                                                class="fa-regular fa-envelope"></i></span>
-                                    </div>
-                                    <div class="hexagon" data-id="risk">
-                                        <span class="hex-title" data-tippy-content="Risk & Compliance"><i
-                                                class="fa-solid fa-asterisk"></i></span>
-                                    </div>
-                                </div>
-                            </div>
+                            @foreach ($solutions as $solution)
+                                <div class="hexagon">
+                                    <span class="hex-title" data-tippy-content="{{ $solution->title }}"><i
+                                            class="fa-solid fa-unlock"></i></span>
 
-                            <div class="hexagon">
-                                <span class="hex-title" data-tippy-content="IT Management"><i
-                                        class="fa-solid fa-network-wired"></i></span>
-                                <!-- Sub Sub Categories -->
-                                <div class="sub-sub-category">
-                                    <div class="hexagon" data-id="itManagement">
-                                        <span class="hex-title" data-tippy-content="IT Management & Analytics"><i
-                                                class="fa-solid fa-network-wired"></i></span>
-                                    </div>
-                                    <div class="hexagon" data-id="securityInfo">
-                                        <span class="hex-title" data-tippy-content="Security Information"><i
-                                                class="fa-solid fa-shield-halved"></i></span>
+                                    <!-- Sub Sub Categories -->
+
+                                    <div class="sub-sub-category">
+                                        @foreach ($solution->sub_title as $subtitle)
+                                            <div class="hexagon" data-id="{{ 'solution' . $subtitle->id }}">
+                                                <span class="hex-title"
+                                                    data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                        class="fa-regular fa-envelope"></i></span>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="hexagon main-hexagon blue animated">
-                        <span class="hex-title" data-tippy-content="Services"><i
+                        <span class="hex-title" data-tippy-content="@lang('frontendmodule::front.consultation')"><i
                                 class="fa-solid fa-gears"></i></span>
                         <div class="sub-categories">
-                            <div class="hexagon"></div>
-                            <div class="hexagon"></div>
-                            <div class="hexagon"></div>
+                            @foreach ($services as $service)
+                                <div class="hexagon">
+                                    <span class="hex-title" data-tippy-content="{{ $service->title }}"><i
+                                            class="fa-solid fa-unlock"></i></span>
+
+                                    <!-- Sub Sub Categories -->
+
+                                    <div class="sub-sub-category">
+                                        @foreach ($service->sub_title as $subtitle)
+                                            <div class="hexagon" data-id="{{ 'solution' . $subtitle->id }}">
+                                                <span class="hex-title"
+                                                    data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                        class="fa-regular fa-envelope"></i></span>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -213,169 +201,327 @@
                     </div>
 
                     <div class="hexagon main-hexagon blue animated">
-                        <span class="hex-title" data-tippy-content="Man Power Services"><i
+                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.retail')><i
                                 class="fa-solid fa-user-gear"></i></span>
+                        <!-- Sub Categories -->
+                        <div class="sub-categories">
+
+                            @foreach ($management_services as $managent_service)
+                                <div class="hexagon">
+
+                                    <span class="hex-title" data-tippy-content="{{ $managent_service->title }}"><i
+                                            class="fa-solid fa-unlock"></i></span>
+
+
+                                    <!-- Sub Sub Categories -->
+
+                                    <div class="sub-sub-category">
+                                        @foreach ($managent_service->sub_title as $subtitle)
+                                            <div class="hexagon" data-id="{{ 'management' . $subtitle->id }}">
+                                                <span class="hex-title"
+                                                    data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                        class="fa-regular fa-envelope"></i></span>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+
+                                </div>
+                            @endforeach
+
+
+                        </div>
                     </div>
                     <div class="hexagon main-hexagon orange animated">
-                        <span class="hex-title" data-tippy-content="Management Services"><i
+                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.vendor')><i
                                 class="fa-solid fa-users-gear"></i></span>
+                        <div class="sub-categories">
+
+                            @foreach ($manpower_services as $manpower_service)
+                                <div class="hexagon">
+
+                                    <span class="hex-title" data-tippy-content="{{ $manpower_service->title }}"><i
+                                            class="fa-solid fa-unlock"></i></span>
+
+
+                                    <!-- Sub Sub Categories -->
+
+                                    <div class="sub-sub-category">
+                                        @foreach ($manpower_service->sub_title as $subtitle)
+                                            <div class="hexagon" data-id="{{ 'manpower' . $subtitle->id }}">
+                                                <span class="hex-title"
+                                                    data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                        class="fa-regular fa-envelope"></i></span>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+
+                                </div>
+                            @endforeach
+
+
+                        </div>
                     </div>
                     <div class="hexagon main-hexagon orange animated">
-                        <span class="hex-title"><i class="fa-brands fa-app-store"></i></span>
+                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.contact_us')><i
+                                class="fa-brands fa-app-store"></i></span>
+
+                        <div class="sub-categories">
+
+
+                            <div class="hexagon">
+
+                                <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.fax')><i
+                                        class="fa-solid fa-unlock"></i></span>
+
+
+                                <!-- Sub Sub Categories -->
+
+                                <div class="sub-sub-category">
+
+                                    <div class="hexagon" data-id="fax">
+                                        <span class="hex-title" data-tippy-content="Fax"><i
+                                                class="fa-regular fa-envelope"></i></span>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="hexagon">
+
+                                <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.landline')><i
+                                        class="fa-solid fa-unlock"></i></span>
+
+
+                                <!-- Sub Sub Categories -->
+
+                                <div class="sub-sub-category">
+
+                                    <div class="hexagon" data-id="landline">
+                                        <span class="hex-title" data-tippy-content="land Line"><i
+                                                class="fa-regular fa-envelope"></i></span>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="hexagon">
+
+                                <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.email')><i
+                                        class="fa-solid fa-unlock"></i></span>
+
+
+                                <!-- Sub Sub Categories -->
+
+                                <div class="sub-sub-category">
+
+                                    <div class="hexagon" data-id="email">
+                                        <span class="hex-title" data-tippy-content="email"><i
+                                                class="fa-regular fa-envelope"></i></span>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
                     </div>
                 </div>
 
                 <!-- Right Side -->
                 <div class="right-side">
                     <div id="content">
-                        <div class="tab-content" id="careers">
-                            <h1 class="main-title">Careers</h1>
-                            <div class="desc">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempora impedit amet ratione vitae, aliquam
-                                    doloremque libero eos quam et alias veritatis, pariatur.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempor.
-                                </p>
-                            </div>
-                            <div class="category-slider">
-                                <div class="slides owl-theme owl-carousel">
-                                    <div class="category-img">
-                                        <img src="{{ asset('assets/img/cat-slides/1.jpg') }}" />
+
+
+                        @foreach ($solutions as $solution)
+                            @foreach ($solution->sub_title as $solution_subtitle)
+                                <div class="tab-content" id="{{ 'solution' . $solution_subtitle->id }}">
+                                    <h1 class="main-title">{{ $solution_subtitle->sub_title }}
+                                    </h1>
+                                    <div class="desc">
+                                        <p>
+                                            {{ $solution_subtitle->content }}
+                                        </p>
+
                                     </div>
-                                    <div class="category-img">
-                                        <img src="{{ asset('assets/img/cat-slides/2.jpg') }}" />
-                                    </div>
-                                    <div class="category-img">
-                                        <img src="{{ asset('assets/img/cat-slides/3.jpg') }}" />
-                                    </div>
-                                    <div class="category-img">
-                                        <img src="{{ asset('assets/img/cat-slides/4.jpg') }}" />
+
+                                    <div class="category-slider">
+                                        <div class="slides owl-theme owl-carousel">
+                                            @foreach ($solution_subtitle->files as $image)
+                                                <div class="category-img">
+                                                    <img src="{{ $image->url }}" />
+                                                </div>
+                                            @endforeach
+
+
+                                        </div>
                                     </div>
                                 </div>
+                            @endforeach
+                        @endforeach
+
+                        @foreach ($abouts as $about)
+                            @foreach ($about->sub_title as $about_subtitle)
+                                <div class="tab-content" id="{{ 'about' . $about_subtitle->id }}">
+                                    <h1 class="main-title">{{ $about_subtitle->sub_title }}
+                                    </h1>
+                                    <div class="desc">
+                                        <p>
+                                            {{ $about_subtitle->content }}
+                                        </p>
+                                    </div>
+                                    <div class="category-slider">
+                                        <div class="slides owl-theme owl-carousel">
+                                            @foreach ($about_subtitle->files as $image)
+                                                <div class="category-img">
+                                                    <img src="{{ $image->url }}" />
+                                                </div>
+                                            @endforeach
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
+
+
+                        @foreach ($services as $service)
+                            @foreach ($service->sub_title as $service_subtitle)
+                                <div class="tab-content" id="{{ 'service' . $service_subtitle->id }}">
+                                    <h1 class="main-title">{{ $service_subtitle->sub_title }}
+                                    </h1>
+                                    <div class="desc">
+                                        <p>
+                                            {{ $service_subtitle->content }}
+                                        </p>
+
+                                    </div>
+
+                                    <div class="category-slider">
+                                        <div class="slides owl-theme owl-carousel">
+                                            @foreach ($service_subtitle->files as $image)
+                                                <div class="category-img">
+                                                    <img src="{{ $image->url }}" />
+                                                </div>
+                                            @endforeach
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
+
+
+                        @foreach ($manpower_services as $manpower_service)
+                            @foreach ($manpower_service->sub_title as $subtitle)
+                                <div class="tab-content" id="{{ 'manpower' . $subtitle->id }}">
+                                    <h1 class="main-title">{{ $subtitle->sub_title }}
+                                    </h1>
+                                    <div class="desc">
+                                        <p>
+                                            {{ $subtitle->content }}
+                                        </p>
+
+                                    </div>
+
+                                    <div class="category-slider">
+                                        <div class="slides owl-theme owl-carousel">
+                                            @foreach ($subtitle->files as $image)
+                                                <div class="category-img">
+                                                    <img src="{{ $image->url }}" />
+                                                </div>
+                                            @endforeach
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
+
+
+                        @foreach ($management_services as $manag_service)
+                            @foreach ($manag_service->sub_title as $manag_subtitle)
+                                <div class="tab-content" id="{{ 'management' . $manag_subtitle->id }}">
+                                    <h1 class="main-title">{{ $manag_subtitle->sub_title }}
+                                    </h1>
+                                    <div class="desc">
+                                        <p>
+                                            {{ $manag_subtitle->content }}
+
+                                        </p>
+
+                                    </div>
+
+                                    <div class="category-slider">
+                                        <div class="slides owl-theme owl-carousel">
+                                            @foreach ($manag_subtitle->files as $image)
+                                                <div class="category-img">
+                                                    <img src="{{ $image->url }}" />
+                                                </div>
+                                            @endforeach
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
+
+
+
+
+                        <div class="tab-content" id="fax">
+                            <h1 class="main-title">@lang('frontendmodule::front.fax') :
+                            </h1>
+                            <div class="desc">
+                                <p>
+                                    {{ $webdata->fax }}
+
+                                </p>
                             </div>
                         </div>
 
-                        <div class="tab-content" id="contact">
-                            <h1 class="main-title">Contact Us</h1>
-                        </div>
-                        <div class="tab-content" id="vision">
-                            <h1 class="main-title">Our Vision</h1>
+                        <div class="tab-content" id="landline">
+                            <h1 class="main-title">@lang('frontendmodule::front.landline') :
+                            </h1>
                             <div class="desc">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempora impedit amet ratione vitae, aliquam
-                                    doloremque libero eos quam et alias veritatis, pariatur.
+                                    {{ $webdata->landline }}
+
                                 </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempor.
-                                </p>
-                            </div>
-                            <div class="category-slider">
-                                <div class="slides owl-theme owl-carousel">
-                                    <div class="category-img">
-                                        <img src="{{ asset('assets/img/cat-slides/3.jpg') }}" />
-                                    </div>
-                                    <div class="category-img">
-                                        <img src="{{ asset('assets/img/cat-slides/1.jpg') }}" />
-                                    </div>
-                                    <div class="category-img">
-                                        <img src="{{ asset('assets/img/cat-slides/2.jpg') }}" />
-                                    </div>
-                                    <div class="category-img">
-                                        <img src="{{ asset('assets/img/cat-slides/5.jpg') }}" />
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="tab-content" id="mission">
-                            <h1 class="main-title">Our Mission</h1>
+
+                        <div class="tab-content" id="email">
+                            <h1 class="main-title"> @lang('frontendmodule::front.email') :
+                            </h1>
                             <div class="desc">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempora impedit amet ratione vitae, aliquam
-                                    doloremque libero eos quam et alias veritatis, pariatur.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempor.
+                                    {{ $webdata->email1 }}
+
                                 </p>
                             </div>
                         </div>
-                        <div class="tab-content" id="news">
-                            <h1 class="main-title">News &amp; Events</h1>
-                            <div class="desc">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempora impedit amet ratione vitae, aliquam
-                                    doloremque libero eos quam et alias veritatis, pariatur.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempor.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="tab-content" id="team">
-                            <h1 class="main-title">Our Team</h1>
-                            <div class="desc">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempora impedit amet ratione vitae, aliquam
-                                    doloremque libero eos quam et alias veritatis, pariatur.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempor.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="tab-content" id="emailSecurity">
-                            <h1 class="main-title">Email Security</h1>
-                            <div class="desc">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempora impedit amet ratione vitae, aliquam
-                                    doloremque libero eos quam et alias veritatis, pariatur.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempor.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="tab-content" id="risk">
-                            <h1 class="main-title">Risk &amp; Compliance</h1>
-                            <div class="desc">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempora impedit amet ratione vitae, aliquam
-                                    doloremque libero eos quam et alias veritatis, pariatur.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusamus harum laborum unde! Quod nobis necessitatibus
-                                    consequatur tempor.
-                                </p>
-                            </div>
-                        </div>
+
+
+
+
+
+
                     </div>
                 </div>
             </div>

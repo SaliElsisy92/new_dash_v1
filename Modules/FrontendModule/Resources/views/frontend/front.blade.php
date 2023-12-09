@@ -8,12 +8,12 @@
     <meta name="description" content=" {{ $seo_info->desc ?? '' }}">
     <meta name="author" content="{{ $seo_info->author ?? '' }}">
     <meta name="robots" content="index,follow">
-    <meta itemprop="name" content="{{ $seo_info->name??'' }}">
-    <meta itemprop="description" content="{{ $seo_info->desc??'' }}">
-    <meta property="og:title" content="{{ $seo_info->name??'' }}">
+    <meta itemprop="name" content="{{ $seo_info->name ?? '' }}">
+    <meta itemprop="description" content="{{ $seo_info->desc ?? '' }}">
+    <meta property="og:title" content="{{ $seo_info->name ?? '' }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ $seo_info->url ?? '#' }}">
-    <meta property="og:description" content="{{ $seo_info->desc??'' }}">
+    <meta property="og:description" content="{{ $seo_info->desc ?? '' }}">
     <meta property="og:site_name" content="pioneer">
 
     <meta property="og:image"
@@ -21,8 +21,8 @@
 
 
     <meta name="twitter:site" content="http://sitelink.com">
-    <meta name="twitter:title" content="{{ $seo_info->name??'' }}">
-    <meta name="twitter:description" content="{{ $seo_info->desc??'' }}">
+    <meta name="twitter:title" content="{{ $seo_info->name ?? '' }}">
+    <meta name="twitter:description" content="{{ $seo_info->desc ?? '' }}">
 
     <meta name="twitter:image"
         content="{{ $seo_info != null ? asset('images/seo/' . $seo_info->image) : asset('images/img/logo.svg') }}">
@@ -126,12 +126,8 @@
                                         </div>
                                     @endforeach
                                 </div>
-
-
                             </div>
                         @endforeach
-
-
                     </div>
                 </div>
 
@@ -320,7 +316,7 @@
                                 <div class="desc">
                                     <p>
                                         {{ $manag_subtitle->content }}
-                                       
+
                                     </p>
 
                                 </div>

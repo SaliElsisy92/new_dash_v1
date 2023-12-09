@@ -119,7 +119,10 @@
             <div class="main-banner-wrapper">
                 <div class="banner-slides owl-theme owl-carousel">
                     @foreach ($slider as $sl)
-                        <div class="slide slide-one" style="background-image:{{ $sl->file }}">
+                        <!-- <div class="slide slide-one" style="background-image:{{asset($sl->file)}}"> -->
+                            <?php  $slide=str_replace("127.0.0.1:8000","",$sl->file); ?>
+                        <div class="slide slide-one" style="background-image:url({{$slide}});">
+
                             <div class="container">
                                 <div class="row banner-content">
                                     <div class="col-lg-6">

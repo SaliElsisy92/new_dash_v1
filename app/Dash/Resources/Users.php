@@ -9,6 +9,7 @@ class Users extends Resource {
 
 	public static $model         = \App\Models\User::class ;
 	public static $group         = 'users';
+    public static $policy = \App\Policies\UserPolicy::class;
 	public static $displayInMenu = true;
 	public static $icon          = '<i class="fa fa-users"></i>';
 	public static $title         = 'name';

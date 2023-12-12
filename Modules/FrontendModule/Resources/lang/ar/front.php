@@ -13,10 +13,10 @@ return[
     "management_services"=>"اداره_الخدمات",
     "consultation"=>"الاستشارات",
     "vendor"=>"الخبراء",
-    "retail"=>"بيع التجزئه",
-    "contact_us"=>"للتواصل معنا",
+    "retail"=>"بيع_التجزئه",
+    "contact_us"=>"للتواصل_معنا",
     "fax"=>"فاكس",
-    "landline"=>"التليفون الارضى",
+    "landline"=>"التليفون_الارضى",
     "email"=>"الايميل"
 
 

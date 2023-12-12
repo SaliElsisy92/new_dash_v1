@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('slider_id');
             $table->string('locale')->index();
-            $table->string('title');
-            $table->string('desc');
+            $table->string('title')->default('null');
+            $table->string('desc')->default('null');
             $table->index(['slider_id', 'locale'],'slider_id_local_unique');
             $table->foreign('slider_id')->references('id')->on('sliders')->onDelete('cascade');
         });

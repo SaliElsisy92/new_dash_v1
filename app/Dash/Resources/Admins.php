@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 class Admins extends Resource {
 
 	public static $model = \App\Models\User::class ;
-	//public static $policy = \App\Policies\AdminPolicy::class;
+	public static $policy = \App\Policies\AdminPolicy::class;
 	public static $group              = 'users';
 	public static $displayInMenu      = true;
 	public static $icon               = '<i class="fa fa-users"></i>';

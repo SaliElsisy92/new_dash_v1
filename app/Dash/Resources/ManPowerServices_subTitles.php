@@ -108,7 +108,7 @@ class ManPowerServices_subTitles extends Resource {
              'en' => 'English',
              ])->hideInIndex(),
 
-             image()->make(__("dash::dash.image"),'image')->accept('image/*'),
+            // image()->make(__("dash::dash.image"),'image')->accept('image/*'),
 
              dropzone()->make('Upload Files', 'dropzone')
             // (dropzone) this for id not using a columns in current model

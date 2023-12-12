@@ -119,6 +119,6 @@ $(document).ready(function() {
 });
 
 // Tooltip
-tippy('[data-tippy-content]', {
-    touch: 'hold'
-});
+//tippy('[data-tippy-content]', {
+//    touch: 'hold'
+//});

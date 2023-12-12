@@ -161,5 +161,6 @@ return [
 	"twitter"=>"twitter",
 	"whatsapp"=>"whatsapp",
 	"slider"=>"Slider",
-    "website"=>"Website"
+    "website"=>"Website",
+    "landline"=>"Land_Line"
 ];

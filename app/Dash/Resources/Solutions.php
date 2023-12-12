@@ -112,7 +112,7 @@ class Solutions extends Resource {
             'en' => 'English',
             ]),
 
-            textarea()->make(__("dash::dash.content"), 'content')
+          /*   textarea()->make(__("dash::dash.content"), 'content')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
@@ -122,8 +122,8 @@ class Solutions extends Resource {
             ->accept('image/*'),
           // hasMany()->make('subtitles','sub_title',Solution_subTitles::class),
 
-            hasManyThrough()->make('subtitles', 'subtitles',SolutionsubtitleTranslation ::class)
-            ->hideInIndex(),
+          //  hasManyThrough()->make('subtitles', 'subtitles',SolutionsubtitleTranslation ::class)
+         //   ->hideInIndex(), */
 
 
 

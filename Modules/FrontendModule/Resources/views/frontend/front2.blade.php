@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!--start  seo tages -->
-        <meta charset="UTF-8" />
+    <!--start  seo tages -->
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="{{ $seo_info->keys ?? '' }}">
     <meta name="description" content=" {{ $seo_info->desc ?? '' }}">
     <meta name="author" content="{{ $seo_info->author ?? '' }}">
     <meta name="robots" content="index,follow">
-    <meta itemprop="name" content="{{ $seo_info->name??'' }}">
-    <meta itemprop="description" content="{{ $seo_info->desc??'' }}">
-    <meta property="og:title" content="{{ $seo_info->name??'' }}">
+    <meta itemprop="name" content="{{ $seo_info->name ?? '' }}">
+    <meta itemprop="description" content="{{ $seo_info->desc ?? '' }}">
+    <meta property="og:title" content="{{ $seo_info->name ?? '' }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ $seo_info->url ?? '#' }}">
-    <meta property="og:description" content="{{ $seo_info->desc??'' }}">
+    <meta property="og:description" content="{{ $seo_info->desc ?? '' }}">
     <meta property="og:site_name" content="pioneer">
 
     <meta property="og:image"
@@ -23,8 +23,8 @@
 
 
     <meta name="twitter:site" content="http://sitelink.com">
-    <meta name="twitter:title" content="{{ $seo_info->name??'' }}">
-    <meta name="twitter:description" content="{{ $seo_info->desc??'' }}">
+    <meta name="twitter:title" content="{{ $seo_info->name ?? '' }}">
+    <meta name="twitter:description" content="{{ $seo_info->desc ?? '' }}">
 
     <meta name="twitter:image"
         content="{{ $seo_info != null ? asset('images/seo/' . $seo_info->image) : asset('images/img/logo.svg') }}">
@@ -37,7 +37,8 @@
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet" />
     <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
     <!-- owl carousel slider -->
@@ -119,24 +120,37 @@
             <div class="main-banner-wrapper">
                 <div class="banner-slides owl-theme owl-carousel">
                     @foreach ($slider as $sl)
-                        <!-- <div class="slide slide-one" style="background-image:{{asset($sl->file)}}"> -->
-                            <?php  $slide=str_replace("127.0.0.1:8000","",$sl->file); ?>
-                        <div class="slide slide-one" style="background-image:url({{$slide}});">
+                        <!-- <div class="slide slide-one" style="background-image:{{ asset($sl->file) }}"> -->
+                        <?php $slide = str_replace('http://127.0.0.1:8000', '', $sl->file);
+                        $file_extension = Str::lower(File::extension($sl->file));
+                        $image_extensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+                        $video_extensions = ['mp4', 'avi', 'mkv', 'mov', 'wmv'];
+                        ?>
+                        @if (in_array($file_extension, $image_extensions))
+                            <div class="slide slide-one" style="background-image:url({{ $slide }});">
 
-                            <div class="container">
-                                <div class="row banner-content">
-                                    <div class="col-lg-6">
-                                        <h2 class="banner-title">
-                                            {{ $sl->title }}
-                                        </h2>
-                                        <p class="banner-text">
-                                            {{ $sl->desc }}
-                                        </p>
+                                <div class="container">
+                                    <div class="row banner-content">
+                                        <div class="col-lg-6">
+                                            <h2 class="banner-title">
+                                                {{ $sl->title }}
+                                            </h2>
+
+                                            <p class="banner-text">
+                                                {{ $sl->desc }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @elseif (in_array($file_extension, $video_extensions))
+                            <video width="400" controls>
+                                <source src="{{ $slide }}">
+
+                            </video>
+                        @endif
                     @endforeach
+
 
 
                 </div>
@@ -152,14 +166,14 @@
                 <!-- Hexagon -->
                 <div class="hexagon-container opened">
                     <div class="hexagon main-hexagon animated">
-                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.about_us')><i
+                        <span class="hex-title" data-tooltip=@lang('frontendmodule::front.about_us')><i
                                 class="fa-regular fa-address-card"></i></span>
 
                         <!-- Sub Categories -->
                         <div class="sub-categories">
                             @foreach ($abouts as $about)
                                 <div class="hexagon">
-                                    <span class="hex-title" data-tippy-content="{{ $about->title }}"><i
+                                    <span class="hex-title" data-tooltip="{{ $about->title }}"><i
                                             class="fa-solid fa-eject"></i></span>
 
 
@@ -167,8 +181,7 @@
                                     <div class="sub-sub-category">
                                         @foreach ($about->sub_title as $subtitle)
                                             <div class="hexagon" data-id="{{ 'about' . $subtitle->id }}">
-                                                <span class="hex-title"
-                                                    data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                <span class="hex-title" data-tooltip="{{ $subtitle->sub_title }}"><i
                                                         class="fa-regular fa-envelope"></i></span>
                                             </div>
                                         @endforeach
@@ -180,12 +193,11 @@
 
 
                     <div class="hexagon main-hexagon animated">
-                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.solutions&services')><i
-                                class="fa-solid fa-dna"></i></span>
+                        <span class="hex-title" data-tooltip=@lang('frontendmodule::front.solutions&services')><i class="fa-solid fa-dna"></i></span>
                         <div class="sub-categories">
                             @foreach ($solutions as $solution)
                                 <div class="hexagon">
-                                    <span class="hex-title" data-tippy-content="{{ $solution->title }}"><i
+                                    <span class="hex-title" data-tooltip="{{ $solution->title }}"><i
                                             class="fa-solid fa-unlock"></i></span>
 
                                     <!-- Sub Sub Categories -->
@@ -193,8 +205,7 @@
                                     <div class="sub-sub-category">
                                         @foreach ($solution->sub_title as $subtitle)
                                             <div class="hexagon" data-id="{{ 'solution' . $subtitle->id }}">
-                                                <span class="hex-title"
-                                                    data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                <span class="hex-title" data-tooltip="{{ $subtitle->sub_title }}"><i
                                                         class="fa-regular fa-envelope"></i></span>
                                             </div>
                                         @endforeach
@@ -204,12 +215,12 @@
                         </div>
                     </div>
                     <div class="hexagon main-hexagon blue animated">
-                        <span class="hex-title" data-tippy-content="@lang('frontendmodule::front.consultation')"><i
+                        <span class="hex-title" data-tooltip="@lang('frontendmodule::front.consultation')"><i
                                 class="fa-solid fa-gears"></i></span>
                         <div class="sub-categories">
                             @foreach ($services as $service)
                                 <div class="hexagon">
-                                    <span class="hex-title" data-tippy-content="{{ $service->title }}"><i
+                                    <span class="hex-title" data-tooltip="{{ $service->title }}"><i
                                             class="fa-solid fa-unlock"></i></span>
 
                                     <!-- Sub Sub Categories -->
@@ -217,8 +228,7 @@
                                     <div class="sub-sub-category">
                                         @foreach ($service->sub_title as $subtitle)
                                             <div class="hexagon" data-id="{{ 'solution' . $subtitle->id }}">
-                                                <span class="hex-title"
-                                                    data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                <span class="hex-title" data-tooltip="{{ $subtitle->sub_title }}"><i
                                                         class="fa-regular fa-envelope"></i></span>
                                             </div>
                                         @endforeach
@@ -234,7 +244,7 @@
                     </div>
 
                     <div class="hexagon main-hexagon blue animated">
-                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.retail')><i
+                        <span class="hex-title" data-tooltip=@lang('frontendmodule::front.retail')><i
                                 class="fa-solid fa-user-gear"></i></span>
                         <!-- Sub Categories -->
                         <div class="sub-categories">
@@ -242,7 +252,7 @@
                             @foreach ($management_services as $managent_service)
                                 <div class="hexagon">
 
-                                    <span class="hex-title" data-tippy-content="{{ $managent_service->title }}"><i
+                                    <span class="hex-title" data-tooltip="{{ $managent_service->title }}"><i
                                             class="fa-solid fa-unlock"></i></span>
 
 
@@ -251,8 +261,7 @@
                                     <div class="sub-sub-category">
                                         @foreach ($managent_service->sub_title as $subtitle)
                                             <div class="hexagon" data-id="{{ 'management' . $subtitle->id }}">
-                                                <span class="hex-title"
-                                                    data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                <span class="hex-title" data-tooltip="{{ $subtitle->sub_title }}"><i
                                                         class="fa-regular fa-envelope"></i></span>
                                             </div>
                                         @endforeach
@@ -266,14 +275,14 @@
                         </div>
                     </div>
                     <div class="hexagon main-hexagon orange animated">
-                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.vendor')><i
+                        <span class="hex-title" data-tooltip=@lang('frontendmodule::front.vendor')><i
                                 class="fa-solid fa-users-gear"></i></span>
                         <div class="sub-categories">
 
                             @foreach ($manpower_services as $manpower_service)
                                 <div class="hexagon">
 
-                                    <span class="hex-title" data-tippy-content="{{ $manpower_service->title }}"><i
+                                    <span class="hex-title" data-tooltip="{{ $manpower_service->title }}"><i
                                             class="fa-solid fa-unlock"></i></span>
 
 
@@ -282,8 +291,7 @@
                                     <div class="sub-sub-category">
                                         @foreach ($manpower_service->sub_title as $subtitle)
                                             <div class="hexagon" data-id="{{ 'manpower' . $subtitle->id }}">
-                                                <span class="hex-title"
-                                                    data-tippy-content="{{ $subtitle->sub_title }}"><i
+                                                <span class="hex-title" data-tooltip="{{ $subtitle->sub_title }}"><i
                                                         class="fa-regular fa-envelope"></i></span>
                                             </div>
                                         @endforeach
@@ -297,7 +305,7 @@
                         </div>
                     </div>
                     <div class="hexagon main-hexagon orange animated">
-                        <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.contact_us')><i
+                        <span class="hex-title" data-tooltip=@lang('frontendmodule::front.contact_us')><i
                                 class="fa-brands fa-app-store"></i></span>
 
                         <div class="sub-categories">
@@ -305,7 +313,7 @@
 
                             <div class="hexagon">
 
-                                <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.fax')><i
+                                <span class="hex-title" data-tooltip=@lang('frontendmodule::front.fax')><i
                                         class="fa-solid fa-unlock"></i></span>
 
 
@@ -314,7 +322,7 @@
                                 <div class="sub-sub-category">
 
                                     <div class="hexagon" data-id="fax">
-                                        <span class="hex-title" data-tippy-content="Fax"><i
+                                        <span class="hex-title" data-tooltip="Fax"><i
                                                 class="fa-regular fa-envelope"></i></span>
                                     </div>
 
@@ -325,7 +333,7 @@
 
                             <div class="hexagon">
 
-                                <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.landline')><i
+                                <span class="hex-title" data-tooltip=@lang('frontendmodule::front.landline')><i
                                         class="fa-solid fa-unlock"></i></span>
 
 
@@ -334,7 +342,7 @@
                                 <div class="sub-sub-category">
 
                                     <div class="hexagon" data-id="landline">
-                                        <span class="hex-title" data-tippy-content="land Line"><i
+                                        <span class="hex-title" data-tooltip="land Line"><i
                                                 class="fa-regular fa-envelope"></i></span>
                                     </div>
 
@@ -345,7 +353,7 @@
 
                             <div class="hexagon">
 
-                                <span class="hex-title" data-tippy-content=@lang('frontendmodule::front.email')><i
+                                <span class="hex-title" data-tooltip=@lang('frontendmodule::front.email')><i
                                         class="fa-solid fa-unlock"></i></span>
 
 
@@ -354,7 +362,7 @@
                                 <div class="sub-sub-category">
 
                                     <div class="hexagon" data-id="email">
-                                        <span class="hex-title" data-tippy-content="email"><i
+                                        <span class="hex-title" data-tooltip="email"><i
                                                 class="fa-regular fa-envelope"></i></span>
                                     </div>
 
@@ -569,8 +577,9 @@
                         </div>
                         <div class="mail">
                             <img src="{{ asset('assets/img/icons/envelope.png') }}" />
-                            
-                            <a style="color: #004071;" href="mailto:{{ $webdata->email1 }}">{{ $webdata->email1 }}</a>
+
+                            <a style="color: #004071;"
+                                href="mailto:{{ $webdata->email1 }}">{{ $webdata->email1 }}</a>
                         </div>
                     </div>
                     <div class="footer-row">
@@ -581,8 +590,9 @@
                         </div>
                         <div class="mail">
                             <img src="{{ asset('assets/img/icons/web.png') }}" />
-            
-                            <a style="color: #004071;" href="mailto:{{ $webdata->email2 }}">{{ $webdata->email2 }}</a>
+
+                            <a style="color: #004071;"
+                                href="mailto:{{ $webdata->email2 }}">{{ $webdata->email2 }}</a>
                         </div>
                     </div>
             </footer>
@@ -604,9 +614,10 @@
 <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
 
 <!-- Tooltip -->
+<!--
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
-
+-->
 <!-- Main Js -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
 

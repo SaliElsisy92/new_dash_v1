@@ -97,7 +97,8 @@ class slider extends Resource {
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
-            ])->default('null'),
+            ])->default('null')
+            ->hideInIndex(),
 
 
 

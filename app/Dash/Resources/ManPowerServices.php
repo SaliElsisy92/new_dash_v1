@@ -94,14 +94,14 @@ class ManPowerServices extends Resource {
             'en' => 'English',
             ]),
 
-            textarea()->make(__("dash::dash.content"), 'content')
+          /*   textarea()->make(__("dash::dash.content"), 'content')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
             ])->hideInIndex()->default('null'),
 
             image()->make(__("dash::dash.image"),'image')->default('null')
-            ->accept('image/*'),
+            ->accept('image/*'), */
 		];
 	}
 

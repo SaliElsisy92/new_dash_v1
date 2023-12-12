@@ -12,7 +12,7 @@ use App\Models\Solution_subTitleTranslation;
 
 class Solution_subTitle extends Model
 {
-    use HasFactory;
+
 
     use Translatable;
     use HasFactory;

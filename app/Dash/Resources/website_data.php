@@ -117,6 +117,14 @@ class website_data extends Resource {
 
 				,
 
+                tel() ->make(__('dash::dash.landline'), 'landline')
+                ->ruleWhenCreate('required', 'min:10')
+                ->ruleWhenUpdate('required', 'min:10')
+                ->columnWhenCreate(6)
+                ->showInShow()
+
+				,
+
 				number() ->make(__('dash::dash.fax'), 'fax')->default('null')
                 ->ruleWhenCreate('required', 'min:4')
                 ->ruleWhenUpdate('required', 'min:4')
@@ -175,10 +183,10 @@ class website_data extends Resource {
 
 				,
 
-				fileUpload()
+				/* fileUpload()
 				->make(__("dash::dash.image"), 'logo')
 				->accept('image/*') // mimeTypes
-
+ */
 		];
 	}
 

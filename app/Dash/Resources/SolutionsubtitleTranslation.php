@@ -8,7 +8,7 @@ class SolutionsubtitleTranslation extends Resource {
 	 * define Model of resource
 	 * @param Model Class
 	 */
-	public static $model = \App\Models\Solution_subTitleTranslation::class ;
+	public static $model = \App\Models\Solution_subTitle::class ;
 
 
 	/**
@@ -17,7 +17,7 @@ class SolutionsubtitleTranslation extends Resource {
 	 * @param static property as Policy Class
 	 */
 	//public static $policy = \App\Policies\UserPolicy::class ;
-	public static $policy = \App\Policies\showCustom::class;
+	public static $policy = \App\Policies\AllActionsPolicy::class;
 
 	/**
 	 * define this resource in group to show in navigation menu
@@ -89,7 +89,12 @@ class SolutionsubtitleTranslation extends Resource {
 	public function fields() {
 		return [
 			id()->make(__('dash::dash.id'), 'id')->hideInAll(),
-            text()->make('sub_title', 'sub_title')
+            text()->make(__("dash::dash.subtitle"), 'sub_title')
+            ->translatable([
+            'ar' => 'العربية',
+            'en' => 'English',
+            ]),
+            textarea()->make(__("dash::dash.content"), 'content')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',

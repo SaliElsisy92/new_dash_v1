@@ -2,6 +2,7 @@
 namespace App\Dash\Resources;
 use App\Dash\Metrics\AdminGroupRoleMetric;
 use App\Dash\Resources\AdminGroups;
+use App\Dash\Resources\Admins;
 use Dash\Resource;
 use Illuminate\Validation\Rule;
 
@@ -18,7 +19,7 @@ class AdminGroupRoles extends Resource {
 	 * (viewAny,view,create,update,delete,forceDelete,restore) methods
 	 * @param static property as Policy Class
 	 */
-	//public static $policy = \App\Policies\UserPolicy::class ;
+	public static $policy = \App\Policies\AdminGroupsRolesPolicy::class ;
 
 	/**
 	 * define this resource in group to show in navigation menu
@@ -119,6 +120,7 @@ class AdminGroupRoles extends Resource {
 					'users'            => 'Users',
 					'admin_groups'     => 'AdminGroups',
 					'admin_group_role' => 'AdminGroupRoles',
+                    'admins'           => 'Admins'
 				]),
 			checkbox()
 				->make(' add ', 'create')

@@ -12,9 +12,9 @@ return[
     "manpower_services"=>"Man_Power_Services",
     "management_services"=>"Management_Services",
     "consultation"=>"Consultation",
-    "vendor"=>"Vendor Expertise",
+    "vendor"=>"Vendor_Expertise",
     "retail"=>"Retail",
-    "contact_us"=>"Contact Us",
+    "contact_us"=>"Contact_Us",
     "landline"=>"LandLine",
     "fax"=>"Fax",
     "email"=>"Email"

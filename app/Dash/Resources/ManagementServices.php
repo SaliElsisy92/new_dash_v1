@@ -94,7 +94,7 @@ class ManagementServices extends Resource {
             'en' => 'English',
             ]),
 
-            textarea()->make(__("dash::dash.content"), 'content')
+          /*   textarea()->make(__("dash::dash.content"), 'content')
             ->translatable([
             'ar' => 'العربية',
             'en' => 'English',
@@ -102,7 +102,7 @@ class ManagementServices extends Resource {
 
             image()->make(__("dash::dash.image"),'image')->default('null')
             ->rule('image')
-            ->accept('image/*'),
+            ->accept('image/*'), */
 		];
 
 	}

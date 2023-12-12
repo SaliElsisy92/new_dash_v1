@@ -17,7 +17,7 @@ class Authentication extends Controller {
 				'password' => __('dash::dash.password'),
 			]);
 		$remember = !empty(request('remember_me'))?true:false;
-		if (auth()->guard('dash')->attempt(['email' => request('email'), 'password' => request('password'), 'account_type' => 'admin'], $remember)) {
+		if (auth()->guard('dash')->attempt(['email' => request('email'), 'password' => request('password')], $remember)) {
 			return redirect(app('dash')['DASHBOARD_PATH'].'/dashboard');
 		} else {
 			session()->flash('error', __('dash::dash.failed_login_msg'));

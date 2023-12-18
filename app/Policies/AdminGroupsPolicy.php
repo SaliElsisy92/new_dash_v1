@@ -3,5 +3,5 @@ namespace App\Policies;
 use Dash\Policies\Policy;
 
 class AdminGroupsPolicy extends Policy {
-	protected $resource = 'AdminGroups';
+	protected $resource = 'admin_groups';
 }

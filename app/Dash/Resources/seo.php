@@ -93,14 +93,14 @@ class seo extends Resource {
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
-                ->hideInIndex()
+
             ,
             text() ->make(__('dash::dash.author'), 'author')
                 ->ruleWhenCreate('string', 'min:4')
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
-                ->hideInIndex(),
+                ,
             text() ->make(__('dash::dash.name'), 'name')
                 ->translatable([
                     'ar' => 'العربية',
@@ -130,8 +130,8 @@ class seo extends Resource {
                 ->ruleWhenUpdate('string', 'min:4')
                 ->columnWhenCreate(6)
                 ->showInShow()
-                ->hideInIndex(),
-   
+                ,
+
 
 				// image()->make(__('dash::dash.image'), 'image')
 				// ->path('seo/{id}')

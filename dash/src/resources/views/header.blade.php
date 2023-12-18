@@ -221,10 +221,10 @@
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
-                                    {{-- <div class="p-3 text-center border-bottom">
-                                        <a href="{{dash('admin/profile')}}" class="text-center user pb-0 font-weight-bold">{{ admin()->name }}</a>
-                                        <p class="text-center user-semi-title">{{ admin()?->admingroup?->name }}</p>
-                                    </div> --}}
+                                    <div class="p-3 text-center border-bottom">
+                                        <a class="text-center user pb-0 font-weight-bold">{{ admin()->name }}</a>
+                                        <p class="text-center user-semi-title"> {{ admin()?->admingroup?->name }}</p>
+                                    </div>
                                     {{--  <a class="dropdown-item d-flex" href="profile-1.html">
                                         <i class="feather feather-user me-3 fs-16 my-auto"></i>
                                         <div class="mt-1">Profile</div>

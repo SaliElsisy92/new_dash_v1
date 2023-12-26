@@ -144,25 +144,22 @@
                                 </div>
                             </div>
                         @elseif (in_array($file_extension, $video_extensions))
-                            <video loop="" muted="" autoplay="" poster="">
-                                <source src="{{ $slide }}" type="video/mp4">
-                            </video>
-                            <div class="hs-overlay"></div>
-                            <div class="container">
-                                <div class="row banner-content">
-                                    <div class="col-lg-6">
-                                        <h2 class="banner-title">Effictively Integrate Your Business Functions</h2>
-                                        <p class="banner-text">Rawand Tech, your premier destination for dynamic
-                                            services in the realm of technology. As a leading programming company,
-                                            we specialize in delivering cutting-edge solutions tailored to your
-                                            business needs.</p>
+                            <div class="slide slide-one" style="background-image: url(assets/img/slider/2.jpg);">
+                                <video loop="" muted="" autoplay="" poster="">
+                                    <source src="{{ $slide }}" type="video/mp4">
+                                </video>
+                                <div class="hs-overlay"></div>
+                                <div class="container">
+                                    <div class="row banner-content">
+                                        <div class="col-lg-6">
+                                            <h2 class="banner-title"></h2>
+                                            <p class="banner-text"></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         @endif
                     @endforeach
-
-
 
                 </div>
                 <div class="carousel-btn-block banner-carousel-btn">
